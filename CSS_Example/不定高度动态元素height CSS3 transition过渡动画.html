@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="description" content="不定高度动态元素height CSS3 transition过渡动画">
+<meta name="description" content="赖祥燃web前端学习实例页面之不定高度动态元素height CSS3 transition过渡动画">
+<meta name="keywords" content="CSS3, height, transition">
+<meta name="author" content="赖祥燃, laixiangran">
+<title>不定高度动态元素height CSS3 transition过渡动画</title>
+<link rel="stylesheet" href="../css/demo.css" type="text/css">
+<link rel="stylesheet" href="../css/hl.css" type="text/css">
+<style>
+.box{ 
+    width: 400px; 
+    padding: 20px; 
+    border: 40px solid #a0b3d6; 
+    background-color: #eee; 
+    overflow: hidden; 
+}
+.loading{ 
+    height: 100%; 
+    background: url(../img/loading.gif) no-repeat center;
+}
+.in{ 
+    width: 100px; 
+    margin: 0 auto; 
+    background-color: blue; 
+}
+[type=button]{
+    height: 32px;
+    font-size: 100%;
+}
+</style>
+</head>
+<body>
+<div id="main">
+	<h1>不定高度动态元素height CSS3 transition过渡动画实例页面</h1>
+    <div id="body">
+        <div id="effect" class="part">
+        	<h3>效果：</h3>
+            <div class="show">
+            	<div class="demo">
+                    <p>
+                        <input id="button" value="点击我加载更多" type="button">
+                    </p>
+                	<div id="box" class="box">
+                    	<strong>今天一天日常：</strong>
+                        <p>9:46到公司，处理下邮件，四处逛逛；</p>
+                        <p>然后弄报销事宜，最近繁忙，已经拖很久了，后发现，少一张发票。让媳妇帮忙去车里看了下，果然落车里了，得明天整了；</p>
+                        <p>午休到2:15, 最近太累了吗？多睡了15分钟~ 一睁眼，妈呀，办公室等怎么亮了，一个鲤鱼打挺，回座位干活；</p>
+                        <p>雕琢项目和产品，修复和优化一些问题，而后想到菊花加载体验是不是可以优化下，否则砰砰太生硬了；</p>
+                        <p>5点多有交流会AlloyTeam骨干来沪授课，邀请就移动开发事宜做交流，一直到18:30左右；</p>
+                        <p>晚饭，和3个小伙伴一起，19时回座位，继续想菊花加载高度动画问题；</p>
+                        <p>20:15分回去，班车+转2次地铁共75分钟到家；</p>
+                        <p>把媳妇照应好，上床觉觉后，开始了工作与学习，此时10:30;</p>
+                        <p>办公内容： <a href="https://github.com/zhangxinxu/mobilebone">1. Mobilebone</a> ajax增加请求头，可以让后台知道请求类别和来源；2. Mobilebone issuss查看、回复以及整改；3. 博客源代码展示的字体和大小做了调整；4. 继续不定高度动态元素transition动画化研究。</p>
+                        <p>写完这句话，已经是：2015-01-22 1:14. 看来文章今天来不及写了，毕竟不年轻了，要是以前，不写完不睡觉。</p>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+<script>
+
+// 高度无缝动画方法
+var funTransitionHeight = function(element, time) {
+    //window.getComputedStyle IE8-不支持
+    //window.getComputedStyle 与 element.style的区别
+    //1、window.getComputedStyle只读，element.style可读可写
+    //2、window.getComputedStyle能获取到最终应用到元素的CSS属性对象，即使没有显示的设置CSS；element.style只能获取元素style属性中的CSS样式；
+	if (typeof window.getComputedStyle == "undefined") return;
+	var height = window.getComputedStyle(element).height;
+	element.style.height = "auto";
+    var targetHeight = window.getComputedStyle(element).height;
+    var inDom = element.getElementsByTagName("div")[0];
+    if(inDom){
+        if(targetHeight == height){ //解决世界之窗浏览器下element高度不能自适应bug
+            //alert("高度不自适应");
+            targetHeight = window.getComputedStyle(inDom).height; 
+        }
+    }
+	element.style.height = height;
+	setTimeout(function() { //该定时方法使element出现过渡动画效果
+        //IE9-不支持transition
+        if(typeof element.style.transition == "undefined"){
+            //alert("该浏览器不支持transition");
+        }
+        if (time){
+            element.style.transition = "height "+ time +"ms";
+        }
+		element.style.height = targetHeight;
+	},15);
+};
+
+(function(){
+	// demo演示脚本
+	var box = document.getElementById("box"), button = document.getElementById("button");
+	button.onclick = function(){
+		// 载入加载动画，模拟loading效果
+		box.innerHTML = '<div class="loading"></div>';
+		// 随机高度内容	
+		setTimeout(function() {
+			box.innerHTML = '<div id="in" class="in" style="height:'+ Math.round(400 * Math.random()) +'px;"></div>';
+			funTransitionHeight(box, 250);	
+		},500);
+	};
+	// 初始高度
+	funTransitionHeight(box);	
+})();
+</script>
+</body>
+</html>

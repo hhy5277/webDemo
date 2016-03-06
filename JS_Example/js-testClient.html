@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>根据navigator.userAgent和navigator.platform检测呈现引擎、浏览器、平台及操作系统</title>
+    <script type="text/javascript" src="../framework/common/iClient.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+
+            var str = "平台或者设备：";
+            if(iClient.system.win != "CE" || iClient.system.win != "Phone"){
+                str += "Windows " + iClient.system.win;
+            }else if(iClient.system.win == "Phone"){
+                str += "Windows Phone" + iClient.system.winMobile;
+            }else if(iClient.system.win == "CE"){
+                str += "Windows Mobile";
+            }else if(iClient.system.unix){
+                str += "Unix";
+            }else if(iClient.system.wii){
+                str += "任天堂";
+            }else if(iClient.system.ps){
+                str += "Playstation";
+            }else if(iClient.system.nokiaN){
+                str += "NokiaN";
+            }else if(iClient.system.android){
+                str += "Android " + iClient.system.android;
+            }else if(iClient.system.iphone){
+                str += "iPhone(iOS " + iClient.system.ios +")";
+            }else if(iClient.system.ipod){
+                str += "iPod(iOS " + iClient.system.ios +")";
+            }else if(iClient.system.ipad){
+                str += "iPad(iOS " + iClient.system.ios +")";
+            }else if(iClient.system.mac && !iClient.system.ios){
+                str += "Mac OS";
+            }else{
+                str += "未知";
+            }
+
+            str += "\n浏览器：";
+            if(iClient.browser.chrome){
+                str += "Chrome/" + iClient.browser.ver;
+            }else if(iClient.browser.firefox){
+                str += "Firefox/" + iClient.browser.ver;
+            }else if(iClient.browser.ie){
+                str += "IE/" + iClient.browser.ver;
+            }else if(iClient.browser.edge){
+                str += "Microsoft Edge/" + iClient.browser.ver;
+            }else if(iClient.browser.safari){
+                str += "Safari/" + iClient.browser.ver;
+            }else if(iClient.browser.konq){
+                str += "Konqueror/" + iClient.browser.ver;
+            }else if(iClient.browser.opera || iClient.browser.newOpera){
+                str += "Opera/" + iClient.browser.ver;
+            }else{
+                str += "未知";
+            }
+
+            str += "\n呈现引擎：";
+            if(iClient.engine.gecko){
+                str += "Gecko/" + iClient.engine.ver;
+            }else if(iClient.engine.webkit){
+                str += "WebKit/" + iClient.engine.ver;
+            }else if(iClient.engine.ie){
+                str += "IE/" + iClient.engine.ver;
+            }else if(iClient.engine.opera){
+                str += "Opera/" + iClient.engine.ver;
+            }else if(iClient.engine.khtml){
+                str += "KHTML/" + iClient.engine.ver;
+            }else{
+                str += "未知";
+            }
+            alert(str);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

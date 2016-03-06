@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>传统JS思维及es6-Promise下实现的求婚历程表现</title>
+    <style>
+        div{
+            margin-bottom:10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="border:1px solid #909BAF;">
+        <h2>传统JS思维下实现的求婚历程表现</h2>
+        <span id="span1"></span>
+    </div>
+    <div style="border:1px solid #486aaa">
+        <h2>es6-Promise实现的求婚历程表现</h2>
+        <span id="span2"></span>
+    </div>
+    <script>
+        //传统JS思维下实现的求婚历程表现
+        // 男神的各项参数
+        var NanShen = {
+            "身高": 180,
+            "体重": 80,
+            "年薪": "200K",
+            request: function(obj) {
+                // 成功与否随机决定
+                // 执行成功的概率为80%
+                if (Math.random() > 0.2) {
+                    obj.success();
+                } else {
+                    obj.error();
+                }
+            }
+        };
+
+        var Request = function(names, success) {
+            var index = 0, first = 0;
+            var request = function() {
+                if (names[index]) {
+                    NanShen.request({
+                        name: names[index],
+                        success: function() {
+                            first = 0;
+                            document.getElementById("span1").innerHTML += "<p>成功拿下" + names[index] + "</p>";
+                            index++;
+                            request();
+                        },
+                        error: function() {
+                            if (first == 1) {
+                                document.getElementById("span1").innerHTML += "<p>依旧没能拿下" + names[index] + "，求婚失败</p>";
+                                return;
+                            } else {
+                                document.getElementById("span1").innerHTML += "<p>没能拿下" + names[index] + "，再试一次</p>";
+                            }
+                            first = 1;
+                            request();
+                        }
+                    });
+                } else {
+                    success();
+                }
+            };
+            request();
+        };
+
+        Request(["岳父", "大伯", "大姑"], function() {
+            NanShen.request({
+                name: "女神",
+                success: function() {
+                    document.getElementById("span1").innerHTML += "<p>女神同意，求婚成功！</p>";
+                },
+                error: function() {
+                    document.getElementById("span1").innerHTML += "<p>女神不同意，求婚失败！</p>";
+                }
+            });
+        });
+
+        //es6-Promise实现的求婚历程表现
+        var RequestByPromise = function(name) {
+            return new Promise(function(resolve, reject) {
+                var failed = 0;
+                var request = function() {
+                    NanShen.request({
+                        name: name,
+                        success: function() {
+                            document.getElementById("span2").innerHTML += "<p>" + name + "攻略成功！</p>";
+                            failed = 0;
+                            resolve();
+                        },
+                        error: function() {
+                            if (failed == 0) {
+                                document.getElementById("span2").innerHTML += "<p>第一次攻略" + name + "失败，重试一次！</p>";
+                                failed = 1;
+                                // 重新攻略一次
+                                request();
+                            } else {
+                                document.getElementById("span2").innerHTML += "<p>依然没有拿下" + name + "，求婚失败！</p>";
+                                reject();
+                            }
+                        }
+                    });
+                };
+                request();
+            });
+        };
+        RequestByPromise("岳父")                                // 搞定岳父，然后...
+                .then(function() { return RequestByPromise("大伯"); })  // 搞定大伯，然后...
+                .then(function() { return RequestByPromise("大姑"); })  // 搞定大姑，然后...
+                .then(function() {                            // 长辈们全部KO后，攻略女神
+                    NanShen.request({
+                        name: "女神",
+                        success: function() {
+                            document.getElementById("span2").innerHTML += "<p>女神同意，求婚成功！</p>";
+                        },
+                        error: function() {
+                            document.getElementById("span2").innerHTML += "<p>女神不同意，求婚失败！</p>";
+                        }
+                    });
+                }).catch(function(error) {
+                    console.log(error);
+                });
+    </script>
+</body>
+</html>

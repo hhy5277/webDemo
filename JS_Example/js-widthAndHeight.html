@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+   <head lang="en">
+       <meta charset="UTF-8">
+      <title>不同方法下浏览器窗口的宽高</title>
+      <style type="text/css">
+         body {
+            margin: 0;
+            padding: 0;
+            border: 1px solid;
+         }
+      </style>
+   </head>
+   <body>
+      <h2 align="center">请调整浏览器窗口大小</h2><hr>
+      <form action="#" method="get" name="form1">
+         <!–显示浏览器窗口的实际尺寸–>
+         浏览器窗口的实际宽度: <input type="text" name="availWidth" size="4"><br>
+         浏览器窗口的实际高度: <input type="text" name="availHeight" size="4"><br>
+         body的宽度: <input type="text" name="bodyWidth" size="4"><br>
+         body高度: <input type="text" name="bodyHeight" size="4"><br>
+         <input type="button" value="body去掉边框" onclick="removeBodyBorder(event)"/>
+      </form>
+      <script type="text/javascript">
+            var winWidth = 0;
+            var winHeight = 0;
+            //函数：获取尺寸
+            function findDimensions(){
+               //获取窗口宽度
+               if (window.innerWidth){
+                  winWidth = window.innerWidth;
+               }
+               else if ((document.body) && (document.body.clientWidth)){
+                    winWidth = document.body.clientWidth;
+               }
+               //获取窗口高度
+               if (window.innerHeight){
+                  winHeight = window.innerHeight;
+               }
+               else if ((document.body) && (document.body.clientHeight)){
+                  winHeight = document.body.clientHeight;
+               }
+               //通过深入Document内部对body进行检测，获取窗口大小
+               if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth){
+                  winHeight = document.documentElement.clientHeight;
+                  winWidth = document.documentElement.clientWidth;
+               }
+               //结果输出至文本框
+               document.form1.availHeight.value= winHeight;
+               document.form1.availWidth.value= winWidth;
+               document.form1.bodyWidth.value= document.body.clientWidth;
+               document.form1.bodyHeight.value= document.body.clientHeight;
+            }
+
+            findDimensions();
+            //调用函数，获取数值
+            window.onresize=findDimensions;
+
+            function removeBodyBorder(event){
+               var btn = event.target;
+               var bodyTag = document.getElementsByTagName("body")[0];
+               if(bodyTag.style.borderWidth == "0px"){
+                  bodyTag.style.borderWidth = "1px";
+                  btn.value = "body去掉边框";
+               }else{
+                  bodyTag.style.borderWidth = "0px";
+                  btn.value = "body添加边框";
+               }
+               window.onresize();
+            }
+      </script>
+   </body>
+</html>

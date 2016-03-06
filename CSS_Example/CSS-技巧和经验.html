@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS-部分技巧和经验</title>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+        #test1 input:nth-of-type(2) {
+            vertical-align: middle;
+            height: 100px;
+        }
+        #test2 {
+            height: 50px;
+            line-height: 50px;
+        }
+        #test3 {
+            width:150px;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+        #test4 {
+            width: 200px;
+            height: 100px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 auto
+        }
+        #test41 {
+            width: 200px;
+            height: 100px;
+            position: relative;
+            top: 50%;
+            margin: 0 auto;
+            margin-top: -50px;
+        }
+        #test5 {
+            display: table-cell;
+            width: 550px;
+            height: 300px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #test5 p {
+            margin:0;
+        }
+        #test p img {
+            vertical-align:middle;
+        }
+        #test6 {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        #test7 {
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+        #test7 th, #test7 td {
+            border: 1px solid #ddd;
+        }
+        #test8 p::first-letter {
+            margin: 5px 0 0 5px;
+            float: left;
+            color: #FF3366;
+            font-size: 3.0em;
+        }
+        #test9 p {
+            color: transparent;
+            text-shadow: #111 0 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <h3>如何让文本垂直对齐文本输入框？</h3>
+    <div id="test1">
+        <label>设置前：</label><input type="text"/><br/><br/>
+        <label>设置后：</label><input type="text"/>
+    </div>
+    <h3>如何让单行文本在容器内垂直居中？</h3>
+    <div id="test2">
+        单行文本居中
+    </div>
+    <h3>如何使文本溢出边界显示为省略号？</h3>
+    <div id="test3">
+        如何使文本溢出边界显示为省略号？如何使文本溢出边界显示为省略号？
+    </div>
+    <div id="test4">
+        <h3>如何让已知宽高的容器在页面中水平垂直居中1？</h3>
+    </div>
+    <div id="test41">
+        <h3>如何让已知宽高的容器在页面中水平垂直居中2？</h3>
+    </div>
+    <h3>如何让未知尺寸的图片在已知宽高的容器内水平垂直居中？</h3>
+    <div id="test5">
+        <p>
+            <img src="../img/coke_bg.jpg"/>
+        </p>
+    </div>
+    <h3>如何容器透明，内容不透明？</h3>
+    <div id="test6">
+        <span>我是不透明的内容</span>
+    </div>
+    <h3>如何做1像素细边框的table？</h3>
+    <div>
+        <table id="test7">
+            <tr>
+                <th>姓名</th>
+                <td>Joy Du</td>
+            </tr>
+            <tr>
+                <th>年龄</th>
+                <td>26</td>
+            </tr>
+        </table>
+    </div>
+    <h3>段落首字下沉</h3>
+    <div id="test8">
+        <p>段落首字下沉段落首字下沉段落首字下沉段落首字下沉段落首字下沉</p>
+    </div>
+    <h3>简单文字模糊效果</h3>
+    <div id="test9">
+        <p>简单文字模糊效果简单文字模糊效果简单文字模糊效果</p>
+    </div>
+</body>
+</html>

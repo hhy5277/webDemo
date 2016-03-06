@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>custom dropdown</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .dropdown{
+            min-width: 200px;
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown div{
+            position: relative;
+            height:30px;
+            border:1px solid rgb(228,228,228);
+            overflow: hidden;
+        }
+        .dropdown div input{
+            height:30px;
+            border: 0 none;
+            padding-left:10px;
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 1;
+        }
+        .dropdown div span{
+            position: absolute;
+            width:40px;
+            height:30px;
+            text-align: center;
+            background: rgb(240, 240 240);
+            border:1px solid rgb(228,228,228);
+            line-height: 30px;
+            color:rgb(228,228,228);
+            z-index: 10;
+            right:0;
+            top: 0;
+        }
+        .dropdown select{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: absolute;
+            border:1px solid rgb(228,228,228);
+            top: 30px;
+            left: 0;
+            z-index: 0;
+            width:100%;
+            display: none;
+        }
+        .dropdown.focus select{
+            border:1px solid rgb(228,228,228);
+            display: block;
+            z-index: 2;
+        }
+        .dropdown select option{
+            padding-top:5px;
+            height:30px;
+            line-height: 30px;
+            padding-left: 10px;
+        }
+        .dropdown select option:hover{
+            background-color: rgba(0,127,255,0.5);
+            color: rgb(255,255,255);
+        }
+    </style>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $(function () {
+            $(".dropdown div").click(function () {
+                if ($(".dropdown").hasClass("focus")) {
+                    $(".dropdown").removeClass("focus");
+                } else {
+                    $(".dropdown").addClass("focus");
+
+                }
+            });
+            $(".dropdown select").click(function () {
+                $(".dropdown input").val($(this).val());
+                $(".dropdown").removeClass("focus")
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="dropdown">
+    <div><input placeholder="选择服务类型" readonly><span>X</span></div>
+    <select multiple>
+        <option>1111</option>
+        <option>2222</option>
+        <option>3333</option>
+        <option>4444</option>
+    </select>
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8" />
+    <title>Media Queries（媒体查询）</title>
+    <style>
+        ul{
+            list-style:decimal;
+        }
+        @media all and (min-width:500px) and (max-width:1000px){
+            body{
+                color:green;
+            }
+        }
+        @media all and (min-height:300px) and (max-height:500px){
+            body{
+                color:red;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h3>根据下面某条要求试着调整你的viewport以查看效果</h3>
+    <ul class="test1">
+        <li>当页面可见宽度大于500px小于1000px时，文字显示为绿色</li>
+        <li>当页面可见高度大于300px小于500px时，文字显示为红色</li>
+    </ul>
+</body>
+</html>

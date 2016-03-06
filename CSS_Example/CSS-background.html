@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8" />
+    <title>backgrounds_CSS参考手册</title>
+    <style>
+        .test{
+            width:1000px;
+            height:800px;
+            background: url(img/img_11.jpg) no-repeat 10px 20px/616px 425px padding-box,
+            url(img/img_12.jpg) no-repeat 50px 60px/616px 425px padding-box,
+            url(img/img_13.jpg) no-repeat 90px 100px/616px 425px padding-box,
+            url(img/img_02.jpg) round gray;
+        }
+        .test1{
+            float: left;
+            margin-right:20px;
+            overflow: auto;
+            width:200px;
+            height:200px;
+            color:white;
+            background:url(img/img_10.jpg) no-repeat;
+        }
+        .test2{
+            width: 250px;
+            height: 250px;
+        }
+        .test3{
+            margin:20px;
+            float: left;
+            width: 360px;
+            height: 200px;
+            padding: 10px;
+            border: 5px dashed;
+            background: url(img/img_11.jpg) no-repeat;
+        }
+        .test4{
+            margin:20px;
+            float: left;
+            width: 600px;
+            height: 200px;
+            padding: 10px;
+            border: 5px dashed;
+            background: url(img/img_12.jpg) no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="clear: both;">背景图片background-clip三种情况</h2>
+    <div class="test4">
+        我是background-clip:<b style="color:red">border-box</b>(默认情况)
+    </div>
+    <div class="test4" style="background-clip:padding-box">
+        我是background-clip:<b style="color:red">padding-box</b>
+    </div>
+    <div class="test4" style="background-clip:content-box">
+        我是background-clip:<b style="color:red">content-box</b>
+    </div>
+    <div class="test4" style="-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size: 60px;font-weight: bold;">
+        我是background-clip:text(仅webkit)
+    </div>
+
+    <h2 style="clear: both;">背景图片background-origin三种情况</h2>
+    <div class="test3">
+        我是background-origin:<b style="color:red">padding-box</b>(默认情况)
+    </div>
+    <div class="test3" style="background-origin:border-box">
+        我是background-origin:<b style="color:red">border-box</b>
+    </div>
+    <div class="test3" style="background-origin:content-box">
+        我是background-origin:<b style="color:red">content-box</b>
+    </div>
+
+    <h2 style="clear: both;">背景图片background-attachment三种情况</h2>
+    <div class="test1">
+        <div class="test2">
+            设置background-attachment:<b style="color:red">scroll</b>(默认)，背景图像相对于元素固定，也就是说当元素内容滚动时背景图像不会跟着滚动，因为背景图像总是要跟着元素本身。但会随元素的祖先元素或窗体一起滚动
+        </div>
+    </div>
+    <div class="test1" style="background-attachment:fixed">
+        <div class="test2">
+            设置background-attachment:<b style="color:red">fixed</b>,背景图片相对于窗口固定
+        </div>
+    </div>
+    <div class="test1" style="background-attachment:local">
+        <div class="test2">
+            设置background-attachment:<b style="color:red">local</b>，背景图像相对于元素内容固定，也就是说当元素随元素滚动时背景图像也会跟着滚动，因为背景图像总是要跟着内容
+        </div>
+    </div>
+
+    <h2 style="clear: both;">定义多重背景图片</h2>
+    <div class="test">
+    </div>
+
+</body>
+</html>

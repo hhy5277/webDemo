@@ -1,0 +1,25 @@
+{
+  "name": "imageViewer",
+  "version": "1.0.0",
+  "description": "webDemo",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "colorPicker"
+  ],
+  "homepage": "https://github.com/laixiangran/webDemo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laixiangran/webDemo.git"
+  },
+  "author": {
+    "name": "laixiangran",
+    "email": "laixiangran@163.com",
+    "url": "http://www.cnblogs.com/laixiangran/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}

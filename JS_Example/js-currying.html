@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<title>柯里化示例</title>
+		<script type="text/javascript">
+			//柯里化3个常见作用 -- 参数复用、提前返回、延迟计算/运行
+			//1.参数复用 例子：复用参数publicParam1，publicParam2
+			var curryingForParamsOfReuse = function(fn){
+				var args = [].slice.call(arguments,1);
+				return function(){
+					var newArgs = args.concat([].slice.call(arguments));
+					return fn.apply(null,newArgs);
+				};
+			};
+
+			var getParams = curryingForParamsOfReuse(function(){
+				var allArgs = [].slice.call(arguments);
+				console.log(allArgs.join(";"));
+			},"publicParam1","publicParam2");
+
+			getParams("param1","param2");
+
+			//2.提前返回 例子：兼容现代浏览器以及IE浏览器的事件添加方法
+			//初始addEvent的执行其实只实现了部分的应用（只有一次的if...else if...判定），而剩余的参数应用都是其返回函数实现的，典型的柯里化。
+			var addEvent = (function(){
+				if(window.addEventListener){
+					return function(el,sType,fn,capture){
+						el.addEventListener(sType,function(){
+							fn.call(el,e);
+						},(capture));
+					};
+				}else if(window.attachEvent){
+					return function(el,sType,fn,capture){
+						el.attachEvent("on" + sType,function(e){
+                			fn.call(el, e);
+            			});
+					};
+				}
+			})();
+
+			//3.延迟计算
+			var curryWeight = function(fn) {
+			    var _fishWeight = [];
+			    return function() {
+			        if (arguments.length === 0) {
+			            return fn.apply(null, _fishWeight);
+			        } else {
+			            _fishWeight = _fishWeight.concat([].slice.call(arguments));
+			        }
+			    }
+			};
+
+			var fishWeight = 0;
+			var addWeight = curryWeight(function() {
+			    var len = arguments.length;
+			    for (var i=0; i<len; i++) {
+			        fishWeight += arguments[i];
+			    }
+			});
+
+			addWeight(2.3,6.5,1.2,2.5);
+			addWeight();    //  这里才计算
+			console.log(fishWeight);    // 12.5
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

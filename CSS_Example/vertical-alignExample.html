@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>vertical-align示例</title>
+	<style type="text/css">
+		body,img,div,p{
+			margin: 0;
+			padding: 0;
+		}
+		.mainBox{
+			background: green none repeat scroll 0 0;
+			line-height: 150px;
+			width: 600px;
+			color: white;
+			font-size: 30px;
+			padding-left: 20px;
+			margin-left: 310px;
+			margin-bottom: 50px;
+		}
+		.spanBox{
+			background: blue none repeat scroll 0 0;
+			padding-left: 20px;
+			color: white;
+			font-size: 30px;
+		}
+		.testImageInDiv{
+			vertical-align: middle;
+		}
+		.testImageInSpan{
+			vertical-align: middle;
+		}
+		.dotInDiv{
+			display:inline-block; 
+			width:4px; 
+			height:4px; 
+			background:white; 
+			vertical-align:middle;
+		}
+		.dotInSpan{
+			display:inline-block; 
+			width:4px; 
+			height:4px; 
+			background:white; 
+			vertical-align:middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="mainBox">
+		<img class="testImageInDiv" src="./img/baby.jpg" width="66" height="100" />
+		<span class="dotInDiv"></span>
+		<span style="font-size:30px">我在block元素中</span>
+	</div>
+	<div class="mainBox">
+		<span id="spanBox" class="spanBox">
+			<img class="testImageInSpan" src="./img/baby.jpg" width="66" height="100" />
+			<span class="dotInSpan"></span>
+			<span style="font-size:25px">我在inline元素中</span>
+		</span>
+	</div>
+</body>
+</html>

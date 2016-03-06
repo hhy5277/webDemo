@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>text-align:justify</title>
+    <style>
+        .main {
+            background-color:darkseagreen;
+            overflow:hidden;
+            margin-bottom:10px;
+        }
+        .main img {
+            width:256px;
+            height:160px;
+        }
+        .justify-fix {
+            display:inline-block;
+            width:100%;
+            height:0;
+            overflow:hidden;
+        }
+        .justify-fix2 {
+            display:inline-block;
+            width:256px;
+        }
+        /*
+        由于所有浏览器都支持 text-align 的 justify 属性值，但不全支持 text-align-last，
+        我们可以对非IE及IE7以上浏览器使用伪对象生成额外的内容（IE7及以下浏览器不支持伪对象，使用text-align-last处理），
+        置于第二行并将其隐藏，这时第一行文本（即要对齐的那个单行文本）可使用text-align:justify来对齐，
+        所以Firefox也无需使用-moz-text-align-last了，因为也使用了text-align:justify
+        */
+        div li{
+            overflow:hidden;
+            width:200px;
+            height:40px;
+            border:1px solid gray;
+            text-align:justify;
+            text-align-last:justify;
+        }
+        div li:after{
+            display:inline-block;
+            overflow:hidden;
+            width:100%;
+            height:0;
+            content:"";
+        }
+        div p{
+            overflow:hidden;
+            width:200px;
+            height:60px;
+            border:1px solid gray;
+            text-align:justify;
+        }
+    </style>
+</head>
+<body>
+    <h2>以下例子演示通过text-align:justify让li中的文本两端对齐</h2>
+    <div class="main">
+        <ul>
+            <li>我 是 谁 我 是 谁 我 是 谁 我 是 谁</li>
+            <li>你 又 是 谁</li>
+            <li>世 界 末 日 2012</li>
+        </ul>
+        <p>我是谁我是谁我是谁我世界有你我是谁我是谁我世界有你谁我世界有你</p>
+    </div>
+    <h2>以下例子演示如何让任意个数的列表最后一行也两端对齐排列</h2>
+    <div class="main" style="text-align:justify;width:1200px;line-height:0;font-size:0">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <i class="justify-fix"></i>
+    </div>
+    <h2>以下例子演示如何让列表最后一行左对齐排列</h2>
+    <div class="main" style="text-align:justify;width:1200px;line-height:0;font-size:0">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <img src="img/img_02.jpg">
+        <i class="justify-fix2"></i>
+        <i class="justify-fix2"></i>
+    </div>
+</body>
+</html>

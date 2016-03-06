@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>六边形效果</title>
+    <style>
+        .hexagon-left {
+            position:absolute;
+            left:0;
+            top:0;
+            width:0;
+            height:0;
+            border-top:60px solid transparent;
+            border-bottom:60px solid transparent;
+            border-right:35px solid green;
+            z-index:1;
+        }
+        .hexagon-left div{
+            position:absolute;
+            left:4px;
+            top:-60px;
+            width:0;
+            height:0;
+            border-top:60px solid transparent;
+            border-bottom:60px solid transparent;
+            border-right:35px solid green;
+        }
+
+        .hexagon-middle {
+            position:absolute;
+            left:35px;;
+            top:0;
+            width:66px;
+            height:120px;
+            background: green;
+            z-index:4;
+        }
+        /*箭头向右*/
+        .hexagon-right {
+            position:absolute;
+            left:101px;
+            top:0;
+            width:0;
+            height:0;
+            border-top:60px solid transparent;
+            border-bottom: 60px solid transparent;
+            border-left: 35px solid green;
+            z-index:1;
+        }
+        .hexagon-right div{
+            position:absolute;
+            right:4px;
+            top:-60px;
+            width:0;
+            height:0;
+            border-top:60px solid transparent;
+            border-bottom: 60px solid transparent;
+            border-left: 35px solid green;
+
+        }
+        .hexagon:hover .hexagon-left{
+            border-right-color:lightgreen;
+        }
+        .hexagon:hover .hexagon-right{
+            border-left-color:lightgreen;
+        }
+        .hexagon:hover .hexagon-middle{
+            height:110px;
+            border-top:5px solid lightgreen;
+            border-bottom:5px solid lightgreen;
+        }
+        .hexagon .inner{
+            width:100px;
+            height:80px;
+            position: absolute;
+            text-align: center;
+            line-height: 80px;
+            left: 20px;
+            top: 20px;
+            z-index:10;
+        }
+        .hexagons{
+            width: 360px;
+            height: 450px;
+            background: yellowgreen;
+            position: relative;
+            margin:0 auto;
+
+        }
+        #hexagon1{
+            position: absolute;
+            top: 65px;
+            left: 0;
+        }
+        #hexagon2{
+            position: absolute;
+            top: 195px;
+            left: 0;
+        }
+        #hexagon3{
+            position: absolute;
+            top: 325px;
+            left: 0;
+        }
+        #hexagon4{
+            position: absolute;
+            top: 0;
+            left: 110px;
+        }
+        #hexagon5{
+            position: absolute;
+            top: 130px;
+            left: 110px;
+        }
+        #hexagon6{
+            position: absolute;
+            top: 260px;
+            left: 110px;
+        }
+        #hexagon7{
+            position: absolute;
+            top: 65px;
+            left: 220px;
+        }
+        #hexagon8{
+            position: absolute;
+            top: 195px;
+            left: 220px;
+        }
+        #hexagon9{
+            position: absolute;
+            top: 325px;
+            left: 220px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hexagons">
+        <div class="hexagon" id="hexagon1">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                1
+            </div>
+        </div>
+        <div class="hexagon" id="hexagon2">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                2
+            </div>
+        </div>
+        <div class="hexagon" id="hexagon3">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                3
+            </div>
+        </div>
+        <div class="hexagon" id="hexagon4">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                4
+            </div>
+        </div>
+        <div class="hexagon" id="hexagon5">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                5
+            </div>
+        </div>
+        <div class="hexagon" id="hexagon6">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                6
+            </div>
+        </div>
+        <div class="hexagon" id="hexagon7">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                7
+            </div>
+        </div>
+        <div class="hexagon" id="hexagon8">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                8
+            </div>
+        </div>
+        <div class="hexagon" id="hexagon9">
+            <div class="hexagon-left">
+                <div></div>
+            </div>
+            <div class="hexagon-middle">
+                <div></div>
+            </div>
+            <div class="hexagon-right">
+                <div></div>
+            </div>
+            <div class="inner">
+                9
+            </div>
+        </div>
+    </div>
+</body>
+</html>
