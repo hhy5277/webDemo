@@ -1,0 +1,25 @@
+{
+  "name": "webDemo",
+  "description": "webDemo",
+  "main": "",
+  "authors": [
+    "laixiangran"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "homepage": "https://github.com/laixiangran/webDemo",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
