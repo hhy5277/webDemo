@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran" />
+    <title>transition（过渡）</title>
+    <style>
+        h1 {
+            font-size:16px;
+        }
+        .test {
+            overflow:hidden;
+            width:100%;
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        .test li {
+            float:left;
+            width:100px;
+            height:100px;
+            margin:0 5px;
+            border:1px solid #ddd;
+            background-color:#eee;
+            text-align:center;
+            -webkit-transition:background-color .3s ease-in,transform .3s;
+            -moz-transition:background-color .3s ease-in,transform .3s;
+            -o-transition:background-color .3s ease-in,transform .3s;
+            transition:background-color .3s ease-in,transform .3s;
+        }
+        .test li:hover {
+            color:#ffffff;
+            -moz-transform:rotate(15deg);
+            -webkit-transform:rotate(15deg);
+            -o-transform:rotate(15deg);
+            -ms-transform:rotate(15deg);
+            transform:rotate(15deg);
+        }
+        .test li:nth-child(1):hover {
+            background-color:#bbb;
+        }
+        .test li:nth-child(2):hover {
+            background-color:#00AA88;
+        }
+        .test li:nth-child(3):hover {
+            background-color:#630;
+        }
+        .test li:nth-child(4):hover {
+            background-color:#090;
+        }
+        .test li:nth-child(5):hover {
+            background-color:#f00;
+        }
+    </style>
+</head>
+<body>
+<h1>请将鼠标移动到下面的矩形上：</h1>
+<ul class="test">
+    <li>背景色过渡</li>
+    <li>背景色过渡</li>
+    <li>背景色过渡</li>
+    <li>背景色过渡</li>
+    <li>背景色过渡</li>
+</ul>
+</body>
+</html>

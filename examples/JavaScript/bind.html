@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran" />
+		<title>bind方法</title>
+	</head>
+	<body>
+		<input id="button" type="button" value="点击我" />
+		<span id="text">我会变色？</span>
+		<script>
+			//给IE6~8自定义bind方法
+			if (!function() {}.bind){
+				Function.prototype.bind = function(context){
+					var self = this;
+					var args = Array.prototype.slice.call(arguments);
+					return function() {
+						return self.apply(context, args.slice(1));
+					}
+				};
+			}
+
+			//测试1 通过点击按钮改变文本的颜色
+			var eleBtn = document.getElementById("button");
+			var eleText = document.getElementById("text");
+			eleBtn.onclick = function(color){
+				color = color || "#0000ff";
+				console.log(arguments);
+				this.style.color = color;
+			}.bind(eleText,"#ff0000");
+
+			//测试2
+			function bindTest(){
+				console.log(arguments.callee == bindTest);
+				console.log(this);
+			}
+
+			window.bindTest(); //第一个console.log输出true、第二个console.log输出window
+
+			var bindObj = {};
+			var i1 = bindTest.bind(bindObj);
+			window.i1(); //函数经过bing之后，第一个console.log输出true、第二个console.log输出bindObj（上下文始终是bind绑定的bindObj对象）
+		</script>
+	</body>
+</html>

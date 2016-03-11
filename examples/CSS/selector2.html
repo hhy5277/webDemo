@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran" />
+    <title> 使用CSS3 层次选择器</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 300px;
+            margin: 0 auto;
+        }
+        div{
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        /*
+        后代选择器 用于选择某元素的后代元素，包含子元素，子孙元素或者更深层次的关系
+        */
+        div div{
+            background: orange;
+        }
+        /*
+        子选择器 用于选择某元素的子元素，不包括子孙元素或者更深层次的关系
+        */
+        body > div{
+            background: green;
+        }
+        /*
+        相邻兄弟选择器 用于选择某元素后面的一个兄弟元素，它们有相同的父元素
+        */
+        .active + div{
+            background: lime;
+        }
+        /*
+        通用兄弟选择器 用于选择某元素后面的所有兄弟元素，它们有相同的父元素
+        */
+        .active ~ div{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="active">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4
+        <div>5</div>
+        <div>6</div>
+    </div>
+    <div>7
+        <div>8
+            <div>9
+                <div>10</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

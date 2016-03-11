@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran" />
+    <title>
+      JS获取图片中"红框"的位置
+    </title>
+  </head>
+  <body>
+    <button onclick="getColorPosition()">获取"红框"在图片的位置</button>
+    <img src="../sources/images/colorimg.jpg"/>
+    <canvas id="myCanvas">
+      你浏览器不支持canvas元素.
+    </canvas>
+    <script>
+      var findColor = 0xFE0000;
+      var myCanvas = null;
+      var cxt = null;
+      var tempData = null;
+
+      window.onload = function(){
+        var img = new Image();
+        img.src = "../sources/images/colorimg.jpg";
+        myCanvas=document.getElementById("myCanvas");
+        myCanvas.width = img.width;
+        myCanvas.height = img.height;
+        cxt = myCanvas.getContext("2d");
+        cxt.drawImage(img, 0, 0);
+      };
+
+      function getColorPosition() {
+        var width = myCanvas.width;
+        var height = myCanvas.height;
+        console.log(cxt.getImageData(0, 0, width, height));
+        var data = tempData = cxt.getImageData(0, 0, width, height).data;
+        var ord = null;
+        for (var i = 0; i < height; i++) {
+          if (ord && ord.right != undefined) {
+            //获取RGB值转换成十六进制，RGB三位数字分别对应除0x或者#之外的六位数字，RGB一个数字对应两位十六进制数字
+            if ((data[i * width * 4 + ord.right * 4] << 16 | data[i * width * 4 + ord.right * 4 + 1] << 8 | data[i * width * 4 + ord.right * 4 + 2]) != findColor) {
+              ord.bottom = i;
+              break;
+            }
+          } else {
+            for (var j = 0; j < width * 4; j += 4) {
+              if (ord) {
+                if ((data[i * width * 4 + j] << 16 | data[i * width * 4 + j + 1] << 8 | data[i * width * 4 + j + 2]) != findColor) {
+                  ord.right = j ? j / 4 - 1 : width;
+                  break;
+                }
+              } else {
+                if ((data[i * width * 4 + j] << 16 | data[i * width * 4 + j + 1] << 8 | data[i * width * 4 + j + 2]) == findColor) {
+                  ord = {};
+                  ord.left = j / 4;
+                  ord.top = i;
+                }
+              }
+            }
+          }
+        }
+        if (ord) {
+          alert("左上角坐标：(" + ord.left + "," + ord.top + ")\n右下角坐标：(" + ord.right + "," + ord.bottom + ")");
+        } else {
+          alert("无红色块！");
+        }
+      }
+    </script>
+  </body>
+</html>

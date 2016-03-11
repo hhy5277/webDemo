@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <title>结构性伪类选择符 E:empty</title>
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran" />
+    <style>
+        p:empty {
+            height: 25px;
+            border: 1px solid #ddd;
+            background: #eee;
+        }
+        p:empty:after{
+            content:"测试";
+        }
+    </style>
+</head>
+<body>
+<div class="test">
+    <p>结构性伪类选择符 E:empty</p>
+    <p><!--我是一个空节点p，请注意我与其它非空节点p的外观有什么不一样--></p>
+    <p>结构性伪类选择符 E:empty</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran" />
+    <title>Element和Text类型属性和方法示例</title>
+    <script>
+
+        window.onload = function(){
+            console.group("以下是Element类型各属性示例");
+
+            var mainDiv = document.getElementById("main");
+
+            //这两个属性返回的标签名称在HTML中始终输出为大写，在XML（有时也包括XHTML）中输出与源代码一致，因此稳妥起见将获得的标签名统一进行转化（大写或则小写）
+            console.group("通过属性nodeName和tagName获取标签名称");
+            console.log("nodeName:" + mainDiv.nodeName.toLowerCase()+ ", tagName:" + mainDiv.tagName.toLowerCase());
+            console.groupEnd();
+
+            document.getElementById("getAtts").addEventListener("click",function(){
+                console.group("获取div的属性");
+                var atts = mainDiv.attributes;
+                for(var i=0; i<atts.length; i++){
+                    if(atts[i].specified){
+                        console.log(atts[i].nodeName + ":" + atts[i].nodeValue);
+                    }
+                }
+                console.groupEnd();
+            });
+
+            document.getElementById("setTextValue").addEventListener("click",function(){
+                mainDiv.childNodes[0].nodeValue = "<strong>我是新加的文本</strong>";
+            });
+
+            document.getElementById("appendData").addEventListener("click",function(){
+                console.log(mainDiv.firstChild);
+                mainDiv.firstChild.appendData("我是appendData进来的文本");
+            });
+
+            document.getElementById("deleteData").addEventListener("click",function(){
+                console.log(mainDiv.firstChild);
+                mainDiv.firstChild.deleteData(2,5);
+                console.log(mainDiv.firstChild);
+            });
+
+            document.getElementById("insertData").addEventListener("click",function(){
+                console.log(mainDiv.firstChild);
+                mainDiv.firstChild.insertData(2,"我是insertData进来的文本");
+                console.log(mainDiv.firstChild);
+            });
+
+            document.getElementById("replaceData").addEventListener("click",function(){
+                console.log(mainDiv.firstChild);
+                mainDiv.firstChild.replaceData(0,8,"我是replaceData进来的文本");
+                console.log(mainDiv.firstChild);
+            });
+
+            document.getElementById("splitText").addEventListener("click",function(){
+                console.log(mainDiv.firstChild);
+                console.log(mainDiv.firstChild.splitText(5));
+            });
+
+            document.getElementById("substringData").addEventListener("click",function(){
+                console.log(mainDiv.firstChild);
+                console.log(mainDiv.firstChild.substringData(2,7));
+            });
+        };
+    </script>
+</head>
+<body>
+<div id="main" class="main" title="我是div" lang="zh-cn" dir="ltr" style="border: 1px solid red;">
+    我是文本啊
+    <ul>
+        <li name="myLi">我是li-1</li>
+        <li name="myLi">我是li-2</li>
+        <li>我是li-3</li>
+    </ul>
+    <a href="www.baidu.com">跳到百度</a>
+    <a name="baidu">跳到百度</a>
+    <img src="../source/img/ad-mobilebone.png"/>
+    <img src="../source/img/loading.gif"/>
+    <form>
+        <input type="text"/>
+        <input type="text"/>
+    </form>
+    <p>我是段落p</p>
+    <p>
+        当前时间：
+        <script>
+            document.write("<strong>" + (new Date()).toString() + "</strong>");
+        </script>
+    </p>
+</div>
+<div>
+    <h3>Element类型的方法：</h3>
+    <input id="getAtts" type="button" value="获取div的属性"/>
+    <input id="setAtts" type="button" value="修改div的属性"/>
+    <input id="setTextValue" type="button" value="修改文本节点的值"/>
+    <input id="appendData" type="button" value="appendData"/>
+    <input id="deleteData" type="button" value="deleteData"/>
+    <input id="insertData" type="button" value="insertData"/>
+    <input id="replaceData" type="button" value="replaceData"/>
+    <input id="splitText" type="button" value="splitText"/>
+    <input id="substringData" type="button" value="substringData"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css代码实现各种图形</title>
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran" />
+    <style>
+        .tooltip-arrow{
+            border-width: 50px;
+            border-color: transparent;
+            border-top-color: magenta;
+            border-bottom-color: red;
+            border-left-color: blue;
+            border-right-color: green;
+            height: 0;
+            width: 0;
+            border-style: solid;
+            float: left;
+            margin: 50px;
+        }
+        .tooltip-arrow-top{
+            border-width: 50px 50px 0 50px;
+            border-color: transparent;
+            border-top-color: magenta;
+            height: 0;
+            width: 0;
+            border-style: solid;
+            float: left;
+            margin: 50px;
+            transform-origin:50% 50%;
+            transform:rotate(360deg);
+        }
+        .tooltip-arrow-right{
+            border-width: 50px 50px 50px 0;
+            border-color: transparent;
+            border-right-color: green;
+            height: 0;
+            width: 0;
+            border-style: solid;
+            float: left;
+            margin: 50px;
+        }
+        .tooltip-arrow-bottom{
+            border-width: 0 50px 50px 50px;
+            border-color: transparent;
+            border-bottom-color: red;
+            height: 0;
+            width: 0;
+            border-style: solid;
+            float: left;
+            margin: 50px;
+        }
+        .tooltip-arrow-left{
+            border-width: 50px 0 50px 50px;
+            border-color: transparent;
+            border-left-color: blue;
+            height: 0;
+            width: 0;
+            border-style: solid;
+            float: left;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tooltip-arrow"></div>
+    <div class="tooltip-arrow-top"></div>
+    <div class="tooltip-arrow-right"></div>
+    <div class="tooltip-arrow-bottom"></div>
+    <div class="tooltip-arrow-left"></div>
+</body>
+</html>

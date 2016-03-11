@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="赖祥燃, laixiangran@163.com, http://www.cnblogs.com/laixiangran" />
+	<title>抛物线运动</title>
+	<style>
+		body {
+		 	margin: 0; 
+		 	font-size: 14px; 
+		 	font-family: 'microsoft yahei'; 
+		 	position: absolute; 
+		 	top: 0; 
+		 	right: 0; 
+		 	bottom: 0; 
+		 	left: 0; 
+		 	-webkit-user-select: none; 
+		 	-moz-user-select: none; 
+		 	user-select: none; //文本是否可选
+		}
+		p { 
+			margin: 1em;
+		}
+		.target, .element { 
+			position: absolute; 
+			border: 1px solid #34538b; 
+			border-radius: 30px; 
+		}
+		.target { 
+			width: 100px; 
+			height: 40px; 
+			background-color: #f0f3f9; 
+			left: 480px; 
+			top: 300px; 
+			cursor: move; /*要显示的光标类型 参考 http://www.w3school.com.cn/cssref/pr_class_cursor.asp*/
+		}
+		.target:hover { 
+			border: 1px solid red; 
+		}
+		.target:active { 
+			box-shadow: 5px 5px 5px rgba(0,0,0,0.5); /*向框添加阴影 参考 http://www.w3school.com.cn/cssref/pr_box-shadow.asp*/
+		}
+		.element { 
+			width: 30px; 
+			height: 30px; 
+			background-color: #34538b; 
+			left: 960px; 
+			top: 500px; 
+			font-size: 12px; 
+			/*pointer-events: none;*/ /*用户发起的光标移动或对象选择,设置为none即不能选不能点不能相应hover，幻影而已*/
+		}
+		.element:before { 
+			content: attr(data-center); 
+			color: #666; 
+			position: absolute; 
+			left: 100%; 
+			top: -10px;
+		}
+		.target:before { 
+			content: attr(data-center); 
+			width: 100%; 
+			line-height: 40px; 
+			color: #666; 
+			position: absolute; 
+			text-align: center; 
+		}
+		.x { 
+			position: absolute; 
+			left: 0; 
+			top: 516px; 
+			right: 0; 
+			border-top: 1px solid #000; 
+		}
+		.x:before, .y:before { 
+			font-size: 40px; 
+			font-style: italic; 
+			font-family: Arial, Helvetica, sans-serif; 
+			position: absolute; 
+		}
+		.x:before  { 
+			content: 'x'; 
+			top: 0; 
+			right: 5px; 
+		}
+		.y { 
+			position: absolute; 
+			left: 976px; 
+			top: 0; 
+			bottom: 0; 
+			border-left: 1px solid #000; 
+		}
+		.y:before  { 
+			content: 'y'; 
+			left: 5px; 
+			top: 0; 
+		}
+		.article { 
+			display: inline-block; 
+			margin-left: 1em; 
+			color: #34538b; 
+		}
+		</style>
+	</head>
+	<body>
+		<p>点击屏幕任意区域开始运动，拖动椭圆目标至任意位置也能运动</p>
+		<div id="target" class="target"></div>
+		<div id="element" class="element"></div>
+		<i class="x" title="x轴"></i>
+		<i class="y" title="y轴"></i>
+		<script src="js/common.js"></script>
+		<script>
+			/* 元素 */
+			var element = document.getElementById("element"), 
+			target = document.getElementById("target");
+
+			// 抛物线元素的的位置标记
+			var parabola = commonJS.parabola(element, target).mark();
+			// 拖拽
+            commonJS.drag(target, function(target) {
+                console.log(target);
+            });
+			// 抛物线运动的触发
+			document.body.onclick = function() {
+				element.style.marginLeft = "0px";
+				element.style.marginTop = "0px";
+				抛物线运动.init();
+			};
+		</script>
+	</body>
+</html>
