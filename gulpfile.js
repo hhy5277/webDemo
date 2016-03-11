@@ -61,5 +61,5 @@ gulp.task("watch", function() {
     gulp.watch("src/js/*.js", ["scripts"]);
 
     livereload.listen();
-    gulp.watch(["dist/**", "example/**"]).on("change", livereload.changed);
+    gulp.watch(["dist/**", "examples/**"]).on("change", livereload.changed);
 });
