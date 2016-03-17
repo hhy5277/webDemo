@@ -25,6 +25,37 @@ MongoDB 将数据存储为一个文档，数据结构由键值(key=>value)对组
 * MongoDB支持各种编程语言:RUBY，PYTHON，JAVA，C++，PHP，C#等多种语言。
 * MongoDB安装简单。
 
+##MongoDB后台管理 Shell
+
+如果你需要进入 MongoDB 后台管理，你需要先打开 mongodb 装目录的下的 bin 目录，然后执行 mongo.exe 文件，MongoDB Shell是 MongoDB 自带的交互式 `Javascript shell` ,用来对 MongoDB 进行操作和管理的交互式环境。
+当你进入mongoDB后台后，它默认会链接到 test 文档（数据库）：
+
+    > mongo
+    MongoDB shell version: 3.0.6
+    connecting to: test
+    ……
+    
+由于它是一个JavaScript shell，您可以运行一些简单的算术运算:
+
+    > 2 + 2
+    4
+    >
+`db` 命令用于查看当前操作的文档（数据库）：
+
+    > db
+    test
+    >
+
+插入一些简单的记录并查找它：
+
+    > db.runoob.insert({x:10})
+    WriteResult({ "nInserted" : 1 })
+    > db.runoob.find()
+    { "_id" : ObjectId("5604ff74a274a611b0c990aa"), "x" : 10 }
+    >
+    
+第一个命令将数字 10 插入到 runoob 集合的 x 字段中。
+
 ##MongoDB概念解析
 
 ![](http://images2015.cnblogs.com/blog/435795/201603/435795-20160317232823756-797151648.png)
