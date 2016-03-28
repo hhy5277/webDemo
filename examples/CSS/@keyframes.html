@@ -23,6 +23,7 @@
             background:#ddd;
             line-height:20;
             animation:staff 3s linear;
+            animation-iteration-count: infinite;
         }
         #ball {
             position:absolute;
@@ -37,7 +38,8 @@
             background:#F6D66E;
             background:linear-gradient(top,#fff,#F6D66E);
             line-height:20;
-            animation:ball 3s linear;
+            animation:ball 3s linear 5s;
+            animation-iteration-count: infinite;
         }
         @keyframes ball {
             0%{transform:translate(0,0);}
