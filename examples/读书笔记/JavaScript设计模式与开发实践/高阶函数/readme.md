@@ -128,7 +128,7 @@ var currying = function(fn) {
         if (arguments.length === 0) {
             return fn.apply(this, args);
         } else {
-            [].push.apply args, arguments);
+            [].push.apply(args, arguments);
             return arguments.callee;
         }
     }
