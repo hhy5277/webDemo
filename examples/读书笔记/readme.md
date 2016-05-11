@@ -1,5 +1,5 @@
-# ����ʼ�
+# 读书笔记
 
-## Ŀ¼
+## 目录
 
-* [JavaScript���ģʽ�뿪��ʵ��](./JavaScript���ģʽ�뿪��ʵ��)
+* [JavaScript设计模式与开发实践](./JavaScript设计模式与开发实践)
