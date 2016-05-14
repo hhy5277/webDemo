@@ -9,7 +9,7 @@
   </head>
   <body>
     <button onclick="getColorPosition()">获取"红框"在图片的位置</button>
-    <img src="../sources/images/colorimg.jpg"/>
+    <textarea id="txt"></textarea>
     <canvas id="myCanvas">
       你浏览器不支持canvas元素.
     </canvas>
@@ -20,19 +20,20 @@
       var tempData = null;
 
       window.onload = function(){
-        var img = new Image();
-        img.src = "../sources/images/colorimg.jpg";
-        myCanvas=document.getElementById("myCanvas");
-        myCanvas.width = img.width;
-        myCanvas.height = img.height;
-        cxt = myCanvas.getContext("2d");
-        cxt.drawImage(img, 0, 0);
+          var img = new Image();
+          img.src = "../sources/images/colorimg.jpg";
+          img.onload = function() {
+              myCanvas=document.getElementById("myCanvas");
+              myCanvas.width = img.width;
+              myCanvas.height = img.height;
+              cxt = myCanvas.getContext("2d");
+              cxt.drawImage(img, 0, 0);
+          };
       };
 
       function getColorPosition() {
         var width = myCanvas.width;
         var height = myCanvas.height;
-        console.log(cxt.getImageData(0, 0, width, height));
         var data = tempData = cxt.getImageData(0, 0, width, height).data;
         var ord = null;
         for (var i = 0; i < height; i++) {
@@ -60,9 +61,9 @@
           }
         }
         if (ord) {
-          alert("左上角坐标：(" + ord.left + "," + ord.top + ")\n右下角坐标：(" + ord.right + "," + ord.bottom + ")");
+          document.getElementById("txt").value = "左上角坐标：(" + ord.left + "," + ord.top + ")\n右下角坐标：(" + ord.right + "," + ord.bottom + ")";
         } else {
-          alert("无红色块！");
+            document.getElementById("txt").value = "无红色块！";
         }
       }
     </script>
