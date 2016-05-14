@@ -4,10 +4,12 @@
  */
 "use strict";
 
-var s = 'hello';
-
-for (var i = 0; i < s.length; i++){
-    console.log(s[i]);
+function f1() {
+    var n = 5;
+    if (true) {
+        var n = 10;
+    }
+    console.log(n); // 5
 }
 
-console.log(i); // 5
+f1();
