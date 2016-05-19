@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title></title>
+
+    <link rel="stylesheet" href="http://js.arcgis.com/3.13/dijit/themes/nihilo/nihilo.css">
+    <link rel="stylesheet" href="http://js.arcgis.com/3.13/esri/css/esri.css">
+    <style>
+        html, body, #map {
+            height: 100%; width: 100%;
+            margin: 0; padding: 0;
+        }
+        body{
+            background-color: #fff; overflow:hidden;
+            font-family: sans-serif;
+        }
+        #header {
+            padding: 4px 15px 4px 0;
+            background-color: #F2F2EC;
+            color: #575757;
+            font-size: 16pt;
+            text-align: right;
+            font-weight: bold;
+            height:55px;
+        }
+        #subheader {
+            color: #575757;
+            font-size: small;
+            padding: 5px 0 0 0;
+            text-align: right;
+        }
+        #subheader a { color: #575757; }
+
+        .ds { background: #000; overflow: hidden; position: absolute; z-index: 2; }
+        #ds-h div { width: 100%; }
+        #ds .o1 { filter: alpha(opacity=10); opacity: .1; }
+        #ds .o2 { filter: alpha(opacity=8); opacity: .08; }
+        #ds .o3 { filter: alpha(opacity=6); opacity: .06; }
+        #ds .o4 { filter: alpha(opacity=4); opacity: .04; }
+        #ds .o5 { filter: alpha(opacity=2); opacity: .02; }
+        #ds .h1 { height: 1px; }
+        #ds .h2 { height: 2px; }
+        #ds .h3 { height: 3px; }
+        #ds .h4 { height: 4px; }
+        #ds .h5 { height: 5px; }
+    </style>
+
+    <script src="http://js.arcgis.com/3.13/"></script>
+    <script>
+        var map;
+        require([
+            "esri/map", "esri/layers/WebTiledLayer","esri/geometry/Point", "esri/layers/TileInfo", "dojo/parser",
+
+            "dijit/layout/BorderContainer", "dijit/layout/ContentPane", "dojo/domReady!"
+        ], function(
+                Map, WebTiledLayer,Point, TileInfo, parser
+        ) {
+            parser.parse();
+
+            //定义地图
+            map = new Map("map", {
+                "spatialReference":{"wkid":4326},
+                center: [0.985, 29.822],
+                zoom: 3
+            });
+
+            //定义瓦片结构
+            var tileInfo = new TileInfo({
+                "rows" : 256,
+                "cols" : 256,
+                "compressionQuality" : 0,
+                "origin" : {
+                    "x" : -180,
+                    "y" : 90
+                },
+                "spatialReference" : {
+                    "wkid" : 4326
+                },
+                "lods" : [
+                    {"level" : 2, "resolution" : 0.3515625, "scale" : 147748796.52937502},
+                    {"level" : 3, "resolution" : 0.17578125, "scale" : 73874398.264687508},
+                    {"level" : 4, "resolution" : 0.087890625, "scale" : 36937199.132343754},
+                    {"level" : 5, "resolution" : 0.0439453125, "scale" : 18468599.566171877},
+                    {"level" : 6, "resolution" : 0.02197265625, "scale" : 9234299.7830859385},
+                    {"level" : 7, "resolution" : 0.010986328125, "scale" : 4617149.8915429693},
+                    {"level" : 8, "resolution" : 0.0054931640625, "scale" : 2308574.9457714846},
+                    {"level" : 9, "resolution" : 0.00274658203125, "scale" : 1154287.4728857423},
+                    {"level" : 10, "resolution" : 0.001373291015625, "scale" : 577143.73644287116},
+                    {"level" : 11, "resolution" : 0.0006866455078125, "scale" : 288571.86822143558},
+                    {"level" : 12, "resolution" : 0.00034332275390625, "scale" : 144285.93411071779},
+                    {"level" : 13, "resolution" : 0.000171661376953125, "scale" : 72142.967055358895},
+                    {"level" : 14, "resolution" : 8.58306884765625e-005, "scale" : 36071.483527679447},
+                    {"level" : 15, "resolution" : 4.291534423828125e-005, "scale" : 18035.741763839724},
+                    {"level" : 16, "resolution" : 2.1457672119140625e-005, "scale" : 9017.8708819198619},
+                    {"level" : 17, "resolution" : 1.0728836059570313e-005, "scale" : 4508.9354409599309},
+                    {"level" : 18, "resolution" : 5.3644180297851563e-006, "scale" : 2254.4677204799655}
+                ]
+            });
+
+            //地图
+            var baseMap = new WebTiledLayer("http://${subDomain}.tianditu.com/DataServer?T=vec_c&X=${col}&Y=${row}&L=${level}", {
+                "copyright": "Tianditu",
+                "id": "Tianditu",
+                "subDomains": ["t0", "t1", "t2"],
+                "tileInfo":tileInfo
+            });
+            //底图标注
+            var baseMapMarker = new WebTiledLayer("http://${subDomain}.tianditu.com/DataServer?T=cva_c&X=${col}&Y=${row}&L=${level}", {
+                "copyright": "Tianditu",
+                "id": "Tianditu2",
+                "subDomains": ["t0", "t1", "t2"],
+                "tileInfo":tileInfo
+            });
+            map.addLayer(baseMap);
+            map.addLayer(baseMapMarker);
+            //定位到北京
+            map.centerAndZoom(new esri.geometry.Point({"x": 116.39, "y": 39.91, "spatialReference": {"wkid": 4326 } }),14);
+        });
+    </script>
+</head>
+<body class="nihilo">
+<div id="mainWindow"
+     data-dojo-type="dijit/layout/BorderContainer"
+     data-dojo-props="design:'headline',gutters:false"
+     style="width: 100%; height: 100%; margin: 0;">
+    <div id="map" class="shadow"
+         data-dojo-type="dijit/layout/ContentPane"
+         data-dojo-props="region:'center'">
+
+        <!-- drop shadow divs -->
+        <div id="ds">
+            <div id="ds-h">
+                <div class="ds h1 o1"></div>
+                <div class="ds h2 o2"></div>
+                <div class="ds h3 o3"></div>
+                <div class="ds h4 o4"></div>
+                <div class="ds h5 o5"></div>
+            </div>
+        </div> <!-- end drop shadow divs -->
+
+    </div>
+</div>
+</body>
+</html>
