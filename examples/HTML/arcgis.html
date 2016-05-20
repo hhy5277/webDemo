@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
     <title></title>
-
-    <!--<link rel="stylesheet" href="http://js.arcgis.com/3.14/dijit/themes/nihilo/nihilo.css">-->
-    <link rel="stylesheet" href="http://js.arcgis.com/3.14/esri/css/esri.css">
+    <link rel="stylesheet" href="http://localhost:63342/webDemo/bower_components/arcgis_js_api/library/3.13/3.13/esri/css/esri.css">
     <style>
         html, body, #map {
             height: 100%;
@@ -20,24 +18,24 @@
         }
     </style>
 
-    <script src="http://js.arcgis.com/3.14/"></script>
+    <script src="http://localhost:63342/webDemo/bower_components/arcgis_js_api/library/3.13/3.13/init.js"></script>
     <script>
         var map;
         require([
             "esri/map", "esri/layers/WebTiledLayer",
             "esri/geometry/Point", "esri/layers/TileInfo",
             "esri/dijit/OverviewMap",
+            "esri/layers/MapImageLayer",
+            "esri/layers/MapImage",
+            "esri/geometry/ScreenPoint",
             "dojo/domReady!"
         ], function(
-                Map, WebTiledLayer,Point, TileInfo, OverviewMap
+                Map, WebTiledLayer,Point, TileInfo, OverviewMap,
+                MapImageLayer, MapImage, ScreenPoint
         ) {
 
             //定义地图
-            map = new Map("map", {
-                "spatialReference":{"wkid":4326},
-                center: [0.985, 29.822],
-                zoom: 3
-            });
+            map = new Map("map");
 
             //定义瓦片结构
             var tileInfo = new TileInfo({
@@ -88,14 +86,45 @@
             });
             map.addLayer(baseMap);
             map.addLayer(baseMapMarker);
-            //定位到北京
-            map.centerAndZoom(new esri.geometry.Point({"x": 116.39, "y": 39.91, "spatialReference": {"wkid": 4326 } }),14);
 
-            var overviewMapDijit = new OverviewMap({
-                map: map,
-                visible: true
+            //定位到北京
+            map.centerAndZoom(new esri.geometry.Point({"x": 116.39, "y": 39.91, "spatialReference": {"wkid": 4326 } }), 12);
+
+            map.on("click", function(evt) {
+                console.log(map.toMap(new ScreenPoint(evt.x, evt.y)));
             });
-            overviewMapDijit.startup();
+
+            var mi = new MapImage({
+                extent: {
+                    xmin: 116.3735205078125,
+                    ymin: 39.90186754226684,
+                    xmax: 116.4064794921875,
+                    ymax: 39.91813245773315,
+                    spatialReference: {wkid: 4326}
+                },
+                href: "t2.png",
+                width: 1920,
+                height: 859
+            });
+
+            var mi2 = new MapImage({
+                extent: {
+                    xmin: 116.3735205078125,
+                    ymin: 39.90186754226684,
+                    xmax: 116.4064794921875,
+                    ymax: 39.91813245773315,
+                    spatialReference: {wkid: 4326}
+                },
+                href: "test.png",
+                width: 1093,
+                height: 638
+            });
+
+            var miLayer = new MapImageLayer();
+            miLayer.addImage(mi);
+            miLayer.addImage(mi2);
+
+            map.addLayer(miLayer);
 
         });
     </script>
