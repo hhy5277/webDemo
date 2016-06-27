@@ -35,25 +35,15 @@ dojo.ready(function () {
         });
 
         // 初始化底图切换部件
-        eMap.initScalebar({
-            map: map
-        });
-
         eMap.initBasemapGallery({
             mapType: "tdt",
             layers: [["vec", "cva"], ["img", "cia"], ["ter", "cta"]],
             titles: ["地图", "影像", "地形"],
             thumbnailUrls: ["images/layer-icons/tianditu_map_zh.jpg", "images/layer-icons/tianditu_imagery_zh.jpg", "images/layer-icons/tianditu_terrain_zh.jpg"]
-        }, "basemapGallery");
-
-        $("#openBasemap").on("mouseover", function () {
-            $("#basemapGallery").css({
-                opacity: 1,
-                visibility: "visible"
-            });
-        });
+        }, basemapGallery);
 
         map.on("layer-remove", function (evt) {
+            console.log(evt.layer.id);
             if (evt.layer.id === vecLayer.id) {
                 cvaLayer.setVisibility(false);
             }
@@ -78,10 +68,8 @@ dojo.ready(function () {
                 width: 1877,
                 height: 1353
             });
-
             var miLayer = new MapImageLayer();
             miLayer.addImage(mi);
-
             map.addLayer(miLayer);
         });
     });
