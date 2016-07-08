@@ -3,20 +3,19 @@
  * homepage：http://www.laixiangran.cn.
  */
 
-class Student {
-    fullName:string;
+interface Person {
+    firstName: string;
+    lastName: string;
+}
 
-    constructor(public firstName, public middleInitial, public lastName) {
+class Student {
+    fullName: string;
+    constructor (public firstName: string, public middleInitial: string, public lastName: string) {
         this.fullName = firstName + " " + middleInitial + " " + lastName;
     }
 }
 
-interface Person {
-    firstName:string;
-    lastName:string;
-}
-
-function greeter(person:Person):string {
+function greeter (person: Person): string {
     return "Hello, " + person.firstName + " " + person.lastName;
 }
 

@@ -64,25 +64,82 @@ interface ClockConstructor {
     new (hour: number, minute: number): ClockInterface;
 }
 interface ClockInterface {
-    tick();
+    tick(): void;
 }
 
-function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface {
+function createClock (ctor: ClockConstructor, hour: number, minute: number): ClockInterface {
     return new ctor(hour, minute);
 }
 
 class DigitalClock implements ClockInterface {
-    constructor(h: number, m: number) { }
-    tick() {
+    constructor (h: number, m: number) { }
+
+    tick () {
         console.log("beep beep");
     }
 }
 class AnalogClock implements ClockInterface {
-    constructor(h: number, m: number) { }
-    tick() {
+    constructor (h: number, m: number) { }
+
+    tick () {
         console.log("tick tock");
     }
 }
 
 let digital = createClock(DigitalClock, 12, 17);
 let analog = createClock(AnalogClock, 7, 32);
+
+// 扩展接口
+// 一个接口可以继承一个或多个接口，创建出多个接口的合成接口。
+interface Shape {
+    color: string;
+}
+
+interface PenStroke {
+    penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+    sideLength: number;
+}
+
+let square = <Square>{};
+square.color = "blue";
+square.sideLength = 10;
+square.penWidth = 5.0;
+
+// 混合类型
+// 一个对象可以同时做为函数和对象使用，并带有额外的属性
+interface Counter {
+    (start: number): string;
+    interval: number;
+    reset(): void;
+}
+
+function getCounter (): Counter {
+    let counter = <Counter>function (start: number) {};
+    counter.interval = 123;
+    counter.reset = function () {};
+    return counter;
+}
+
+let c = getCounter();
+c(10);
+c.reset();
+c.interval = 5.0;
+
+// 接口继承类
+// SelectableControl包含了Control的所有成员，包括私有成员state。 因为 state是私有成员，所以只能够是Control的子类们才能实现SelectableControl接口。
+class Control {
+    private state: any;
+}
+interface SelectableControl extends Control {
+    select(): void;
+}
+class Button extends Control implements SelectableControl {
+    select () {}
+}
+// 报错
+// class TextBox implements SelectableControl {
+//     select () {}
+// }
