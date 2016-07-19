@@ -1,0 +1,421 @@
+{
+  "query": null,
+  "locale": "en-US",
+  "page": 1,
+  "pages": 662,
+  "start": 1,
+  "end": 10,
+  "next": "https://developer.mozilla.org/en-US/search.json?page=2",
+  "previous": null,
+  "count": 6612,
+  "filters": [
+	{
+	  "name": "Topics",
+	  "slug": "topic",
+	  "options": [
+		{
+		  "name": "APIs and DOM",
+		  "slug": "api",
+		  "count": 4115,
+		  "active": true,
+		  "urls": {
+			"active": "/en-US/search.json?topic=api",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Add-ons & Extensions",
+		  "slug": "addons",
+		  "count": 755,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=addons",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "CSS",
+		  "slug": "css",
+		  "count": 873,
+		  "active": true,
+		  "urls": {
+			"active": "/en-US/search.json?topic=css",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Canvas",
+		  "slug": "canvas",
+		  "count": 172,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=canvas",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Firefox",
+		  "slug": "firefox",
+		  "count": 175,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=firefox",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Firefox OS",
+		  "slug": "firefox-os",
+		  "count": 1092,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=firefox-os",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Firefox for Android",
+		  "slug": "firefox-mobile",
+		  "count": 0,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=firefox-mobile",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Firefox for Desktop",
+		  "slug": "firefox-desktop",
+		  "count": 0,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=firefox-desktop",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Games",
+		  "slug": "games",
+		  "count": 80,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=games",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "HTML",
+		  "slug": "html",
+		  "count": 330,
+		  "active": true,
+		  "urls": {
+			"active": "/en-US/search.json?topic=html",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "JavaScript",
+		  "slug": "js",
+		  "count": 1110,
+		  "active": true,
+		  "urls": {
+			"active": "/en-US/search.json?topic=js",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Marketplace",
+		  "slug": "marketplace",
+		  "count": 73,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=marketplace",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "MathML",
+		  "slug": "mathml",
+		  "count": 73,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=mathml",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Mobile",
+		  "slug": "mobile",
+		  "count": 271,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=mobile",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Open Web Apps",
+		  "slug": "apps",
+		  "count": 296,
+		  "active": true,
+		  "urls": {
+			"active": "/en-US/search.json?topic=apps",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "SVG",
+		  "slug": "svg",
+		  "count": 403,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=svg",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Web Development",
+		  "slug": "webdev",
+		  "count": 116,
+		  "active": true,
+		  "urls": {
+			"active": "/en-US/search.json?topic=webdev",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "WebGL",
+		  "slug": "webgl",
+		  "count": 312,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=webgl",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "Writing Documentation",
+		  "slug": "docs",
+		  "count": 189,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=docs",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "XPCOM",
+		  "slug": "xpcom",
+		  "count": 785,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=xpcom",
+			"inactive": "/en-US/search.json"
+		  }
+		},
+		{
+		  "name": "XUL",
+		  "slug": "xul",
+		  "count": 309,
+		  "active": false,
+		  "urls": {
+			"active": "/en-US/search.json?topic=xul",
+			"inactive": "/en-US/search.json"
+		  }
+		}
+	  ]
+	}
+  ],
+  "documents": [
+	{
+	  "id": 3016,
+	  "title": "DirectoryEntrySync",
+	  "slug": "Web/API/DirectoryEntrySync",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/API/DirectoryEntrySync",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/API/DirectoryEntrySync$edit",
+	  "excerpt": "The DirectoryEntrySync interface of the File System API represents a directory in a file system. It includes methods for creating, reading, looking up, and recursively removing files in a directory.",
+	  "tags": [
+		"API",
+		"Offline",
+		"Reference",
+		"File API",
+		"R茅f茅rence",
+		"File System API",
+		"filesystem"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 3092,
+	  "title": "The Business Benefits of Web Standards",
+	  "slug": "The_Business_Benefits_of_Web_Standards",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/The_Business_Benefits_of_Web_Standards",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/The_Business_Benefits_of_Web_Standards$edit",
+	  "excerpt": "Doing more with less seems to be the mission impossible for web designers: Addressing more customers, a broader audience, more diversity in terms of browsers, more accessibility, users asking for more speed, while spending less to maintain or redesign a web site. Caught between a rock and a hard place, web designers face a formidable challenge. Yet they are finding an unsuspected ally in the battle: Web Standards.",
+	  "tags": [
+		"NeedsUpdate",
+		"Web Development",
+		"Web Standards"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 3256,
+	  "title": "Using the alertdialog role",
+	  "slug": "Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alertdialog_role",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alertdialog_role",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alertdialog_role$edit",
+	  "excerpt": "The alertdialog role is used to notify the user of urgent information that demands the user's immediate attention.聽As the name implies, alertdialog is a type of dialog.聽This means that most of the instructions provided in the ' using the dialog role ' technique are applicable to the alertdialog role as well:",
+	  "tags": [
+		"modal",
+		"alertdialog",
+		"Role",
+		"CodingScripting",
+		"NeedsContent",
+		"ARIA",
+		"Accessibility",
+		"agent",
+		"HTML",
+		"user",
+		"alerts",
+		"Web Development",
+		"userAgent"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 3319,
+	  "title": "Marketing payments: Taxes FAQ",
+	  "slug": "Web/Apps/FAQs/Taxes",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/Apps/FAQs/Taxes",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/Apps/FAQs/Taxes$edit",
+	  "excerpt": "There are several types of taxes that you should be aware of in Marketplace. Each country has its own laws and Marketplace does its best to make taxes as simple as possible for consumers and for developers. However, we are not tax experts and you should consult your tax advisor with any issues regarding your specific situation.",
+	  "tags": [
+		"Payments",
+		"Apps",
+		"Marketplace"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 3528,
+	  "title": "KeyboardEvent.which",
+	  "slug": "Web/API/KeyboardEvent/which",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/which",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/which$edit",
+	  "excerpt": "The KeyboardEvent.which read-only property returns the numeric keyCode of the key pressed, or the character code (charCode) for an alphanumeric key pressed.",
+	  "tags": [
+		"API",
+		"Read-only",
+		"Reference",
+		"Property",
+		"R茅f茅rence",
+		"KeyboardEvent",
+		"Deprecated",
+		"DOM"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 3530,
+	  "title": "Deprecated and obsolete features",
+	  "slug": "Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features$edit",
+	  "excerpt": "This page lists features of JavaScript that are deprecated (that is, still available but planned for removal) and obsolete (that is, no longer usable).",
+	  "tags": [
+		"Obsolete",
+		"Deprecated",
+		"JavaScript"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 3631,
+	  "title": "Uint32Array",
+	  "slug": "Web/JavaScript/Reference/Global_Objects/Uint32Array",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array$edit",
+	  "excerpt": "The Uint32Array typed array represents an array of 32-bit unsigned integers in the platform byte order. If control over byte order is needed, use DataView instead. The contents are initialized to 0. Once established, you can reference elements in the array using the object's methods, or using standard array index syntax (that is, using bracket notation).",
+	  "tags": [
+		"Constructor",
+		"JavaScript",
+		"TypedArray",
+		"TypedArrays"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 7619,
+	  "title": "Object.prototype.toSource()",
+	  "slug": "Web/JavaScript/Reference/Global_Objects/Object/toSource",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toSource",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toSource$edit",
+	  "excerpt": "The toSource() method returns a string representing the source code of the object.",
+	  "tags": [
+		"JavaScript",
+		"Prototype",
+		"Method",
+		"Object"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 7633,
+	  "title": "<sup>",
+	  "slug": "Web/HTML/Element/sup",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/sup$edit",
+	  "excerpt": "The HTML Superscript Element (sup) defines a span of text that should be displayed, for typographic reasons, higher, and often smaller, than the main span of text.",
+	  "tags": [
+		"脡l茅ment",
+		"HTML text-level semantics",
+		"Element",
+		"Reference",
+		"R茅f茅rence",
+		"Web",
+		"HTML"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	},
+	{
+	  "id": 7638,
+	  "title": "<thead>",
+	  "slug": "Web/HTML/Element/thead",
+	  "locale": "en-US",
+	  "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead",
+	  "edit_url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead$edit",
+	  "excerpt": "The HTML Table Head Element (thead) defines a set of rows defining the head of the columns of the table.",
+	  "tags": [
+		"脡l茅ment",
+		"Element",
+		"Reference",
+		"HTML tabular data",
+		"R茅f茅rence",
+		"Web",
+		"HTML",
+		"Tables"
+	  ],
+	  "score": 1,
+	  "parent": {}
+	}
+  ]
+}
