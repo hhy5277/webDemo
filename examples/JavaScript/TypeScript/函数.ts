@@ -27,10 +27,12 @@ let myAdd3: (x: number, y: number) => number = function (x, y) { return x + y; }
 // 可选参数（?）和默认参数(=)
 // lastName为可选参数
 function buildName (firstName: string, lastName?: string) {
-    if (lastName)
+    if (lastName) {
         return firstName + " " + lastName;
-    else
+    }
+    else {
         return firstName;
+    }
 }
 // lastName具有默认值，带有默认值的参数与带有?的参数一样都是可选参数
 function buildName2(firstName: string, lastName: string = "Smith") {
