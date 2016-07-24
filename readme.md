@@ -4,4 +4,4 @@
 
 # 个人网站
 
-[www.laixiangran.cn](www.laixiangran.cn)s
+[www.laixiangran.cn](www.laixiangran.cn)
