@@ -4,4 +4,4 @@
 
 # 个人网站
 
-[www.laixiangran.cn](www.laixiangran.cn)sgit 
+[www.laixiangran.cn](www.laixiangran.cn)
