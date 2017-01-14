@@ -1,0 +1,44 @@
+// 变量
+mainColor = #0982c1
+siteWidth = 1024px
+$borderStyle = dotted
+body
+  color mainColor
+  border 1px $borderStyle mainColor
+  max-width siteWidth
+
+/* Stylus 定义了一个名叫error的mixin，这个error设置了一个参数“$borderWidth”,在没特别定义外，这个参数的值是默认值2px */
+error(borderWidth = 2px) {
+  border: borderWidth solid #F00;
+  color: #F00;
+}
+
+.generic-error {
+  padding: 20px;
+  margin: 4px;
+  error(); /* 调用error mixins */
+}
+
+.login-error {
+  left: 12px;
+  position: absolute;
+  top: 20px;
+  error(5px); /* 调用error mixins，并将参数$borderWidth的值指定为5px */
+}
+
+// 继承
+.block {
+  margin: 10px 5px;
+  padding: 2px;
+}
+
+p {
+  @extend .block; /* 继承.block所有样式 */
+  border: 1px solid #EEE;
+}
+
+ul, ol {
+  @extend .block; /* 继承.block所有样式 */
+  color: #333;
+  text-transform: uppercase;
+}

@@ -18,4 +18,5 @@ function hanoi(disc, src, aux, dst) {
     }
 }
 
+// 测试
 hanoi(3,'1','2','3');

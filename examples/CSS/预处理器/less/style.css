@@ -1,0 +1,28 @@
+body {
+  color: #0982c1;
+  border: 1px dotted #0982c1;
+  max-width: 1024px;
+}
+.block {
+  margin: 10px 5px;
+  padding: 2px;
+}
+p {
+  margin: 10px 5px;
+  padding: 2px;
+  /* 继承 '.block'中的样式 */
+  border: 1px solid #EEE;
+}
+ul,
+ol {
+  margin: 10px 5px;
+  padding: 2px;
+  /*继承'.block' 中的样式*/
+  color: #333;
+  text-transform: uppercase;
+}
+h1 {
+  background: #0982C1;
+  border: 3px solid #000000;
+}
+/*# sourceMappingURL=style.css.map */

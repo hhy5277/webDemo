@@ -1,0 +1,33 @@
+// 变量
+@mainColor: #0982c1;
+@siteWidth: 1024px;
+@borderStyle: dotted;
+body {
+  color: @mainColor;
+  border: 1px @borderStyle @mainColor;
+  max-width: @siteWidth;
+}
+
+// 继承
+.block {
+  margin: 10px 5px;
+  padding: 2px;
+}
+
+p {
+  .block; /* 继承 '.block'中的样式 */
+  border: 1px solid #EEE;
+}
+
+ul, ol {
+  .block; /*继承'.block' 中的样式*/
+  color: #333;
+  text-transform: uppercase;
+}
+
+// 颜色函数
+@color: #0982C1;
+h1 {
+  background: @color;
+  border: 3px solid darken(@color, 50%);
+}

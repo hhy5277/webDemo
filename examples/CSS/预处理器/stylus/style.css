@@ -1,0 +1,35 @@
+body {
+  color: #0982c1;
+  border: 1px dotted #0982c1;
+  max-width: 1024px;
+}
+/* Stylus 定义了一个名叫error的mixin，这个error设置了一个参数“$borderWidth”,在没特别定义外，这个参数的值是默认值2px */
+.generic-error {
+  padding: 20px;
+  margin: 4px;
+  border: 2px solid #f00;
+  color: #f00; /* 调用error mixins */
+}
+.login-error {
+  left: 12px;
+  position: absolute;
+  top: 20px;
+  border: 5px solid #f00;
+  color: #f00; /* 调用error mixins，并将参数$borderWidth的值指定为5px */
+}
+.block,
+p,
+ul,
+ol {
+  margin: 10px 5px;
+  padding: 2px;
+}
+p { /* 继承.block所有样式 */
+  border: 1px solid #eee;
+}
+ul,
+ol { /* 继承.block所有样式 */
+  color: #333;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=style.css.map */
