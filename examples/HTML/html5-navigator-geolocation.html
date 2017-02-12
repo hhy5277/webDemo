@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"/>
+    <title>地理位置API - navigator.geolocation</title>
+</head>
+<body>
+<span id="locationInfo"></span>
+<script>
+    //异步的获取我的位置，并在指定的元素中展示出来
+    function whereami(elt) { //将此对象作为第三个参数传递给getCurrentPosition()方法
+        var options = {
+            //设置为true，表示如果可以的话
+            //获取高精度的位置信息（例如，通过GPS获取）
+            //但是，要注意的是，这会影响电池寿命
+            enableHighAccuracy: false,//可以近似：这是默认值
+
+            //如果获取缓存过的位置信息就足够的话，可以设置此属性
+            //默认值为0,表示强制检查新的位置信息
+            maximumAge: 300000,//5分钟左后
+
+            //愿意等待多长时间来获取位置信息？
+            //默认值为无限长，getCurrentPosition()方法永不超时
+            timeout: 15000//不要超过15秒
+        };
+
+        if (navigator.geolocation) { //如果支持的话，就获取位置信息
+            navigator.geolocation.getCurrentPosition(success, error, options);
+        } else {
+            elt.innerHTMl = "该浏览器不支持定位！";
+        }
+
+        //当获取位置信息失败的时候，会调用此函数
+        function error(e) {
+            //error对象包含一些数字编码和文本消息，如下所示：
+            //1:用户不允许分享他/她的位置信息
+            //2:浏览器无法确定位置
+            //3:发生超时
+            elt.innerHTML = "定位失败！错误代码：" + e.code + "，错误信息：" + e.message;
+        }
+
+        //当获取位置信息成功的时候，会调用此函数
+        function success(pos) {
+            console.log(pos);
+            //总是可以获取如下这些字段
+            //但是要注意的是时间戳信息在outer对象中，而不在inner、coords对象中
+            var msg = "获取时间：" + new Date(pos.timestamp).toLocaleString() +
+                    "，精度：" + pos.coords.accuracy +
+                    "，经度：" + pos.coords.longitude +
+                    "，纬度：" + pos.coords.latitude + "。";
+
+            //如果设备还返回了海拔信息，则将其添加进去
+            if (pos.coords.altitude) {
+                msg += "，海拔：" + pos.coords.altitude + "±" +
+                    pos.coords.altitudeAccuracy + "。";
+            }
+
+            //如果设备还返回了速度和航向信息，也将它们添加进去
+            if (pos.coords.speed) {
+                msg += "，速度：" +
+                    pos.coords.speed + "m/s，航向：" +
+                    pos.coords.heading + "°。";
+            }
+            elt.innerHTML = msg; //显示所有的位置信息
+        }
+    }
+
+    whereami(document.getElementById('locationInfo'));
+</script>
+</body>
+</html>
