@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"/>
+    <title>bootstrap-datetimepicker示例</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+</head>
+<body>
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+<script src="http://cdn.bootcss.com/moment.js/2.17.1/moment-with-locales.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js"></script>
+<div class="container">
+    <h1>
+        选择日期：
+    </h1>
+    <div class="row">
+        <div class='col-md-6'>
+            <input type='text' class="form-control" id='datetimepicker4' value="2017"/>
+        </div>
+        <div class='col-md-6'>
+            <p id="showText"></p>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+
+                $('#datetimepicker4').datetimepicker({
+                    format: 'YYYY',
+                    viewMode: 'years'
+                });
+
+                $('#datetimepicker4').datetimepicker().on('dp.change', (ev) => {
+                    $("#showText").append(JSON.stringify(ev.date) + '<br/>');
+                });
+
+                $('#datetimepicker4').datetimepicker().on('dp.show', (ev) => {
+                    $('#datetimepicker4').data("DateTimePicker").viewMode($('#datetimepicker4').data("DateTimePicker").viewMode());
+                });
+
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>
