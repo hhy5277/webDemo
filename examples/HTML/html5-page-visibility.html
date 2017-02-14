@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"/>
+    <title>Page Visibility - 页面可见性</title>
+</head>
+<body onload="onLoad()">
+<h1>利用页面可见性（Page Visibility API）来进行相应操作</h1>
+<p>查看控制台的打印记录</p>
+<hr>
+<h1>兼容性</h1>
+<iframe width="100%" height="475" src="http://caniuse.com/pagevisibility/embed" frameborder="0"></iframe>
+<script>
+    var timer = 0;
+    var PERIOD_VISIBLE = 1000; // 当页面可见时每间隔1s检查邮件
+    var PERIOD_NOT_VISIBLE = 5000; // 当页面不可见时每间隔5s检查邮件
+
+    function onLoad() {
+        timer = setInterval(checkEmail, (document.hidden) ? PERIOD_NOT_VISIBLE : PERIOD_VISIBLE);
+        console.log(document.hidden ? '页面不可见，每间隔5s检查邮件。' : '页面可见，每间隔1s检查邮件。');
+        if (document.addEventListener) {
+            document.addEventListener("visibilitychange", visibilityChanged);
+        }
+    }
+
+    function visibilityChanged() {
+        console.log('document.visibilityState: ', document.visibilityState);
+        clearTimeout(timer);
+        timer = setInterval(checkEmail, (document.hidden) ? PERIOD_NOT_VISIBLE : PERIOD_VISIBLE);
+        console.log(document.hidden ? '页面不可见，每间隔5s检查邮件。' : '页面可见，每间隔1s检查邮件。');
+    }
+
+    function checkEmail() {
+        // 检查服务器的新消息
+        console.log("检查邮件！");
+    }
+
+</script>
+</body>
+</html>
