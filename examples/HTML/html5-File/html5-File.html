@@ -185,6 +185,51 @@
     });
 </script>
 
+<h2>5、使用XHR上传文件</h2>
+<div id="droptarget" style="width: 500px; height: 200px; background: silver">
+    Drop some files here
+</div>
+<pre id="output5"></pre>
+<script>
+    let droptarget = document.getElementById("droptarget");
+
+    function handleEvent(event) {
+        let output = document.getElementById("output5"),
+            data, xhr,
+            files, i, len;
+
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+
+        if (event.type == "drop") {
+            data = new FormData();
+            files = event.dataTransfer.files;
+            i = 0;
+            len = files.length;
+
+            while (i < len) {
+                data.append("file" + i, files[i]);
+                i++;
+            }
+
+            xhr = new XMLHttpRequest();
+            xhr.open("post", "FileUpload.php", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    output.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send(data);
+        }
+    }
+    droptarget.addEventListener("dragenter", handleEvent);
+    droptarget.addEventListener("dragover", handleEvent);
+    droptarget.addEventListener("drop", handleEvent);
+</script>
+
 <hr>
 <h1>兼容性</h1>
 <iframe width="100%" height="475" src="http://caniuse.com/fileapi/embed" frameborder="0"></iframe>
