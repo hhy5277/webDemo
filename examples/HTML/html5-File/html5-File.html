@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"/>
+    <title>File API</title>
+</head>
+<body>
+<h1>File API 示例</h1>
+
+<h2>1、读取选择的每个文件的信息</h2>
+<input id="files1" type="file" multiple>
+<pre id="output1"></pre>
+<script>
+
+    // 读取选择的每个文件的信息
+    let filesList1 = document.getElementById("files1"),
+        output1 = document.getElementById("output1");
+
+    filesList1.addEventListener("change", (event) => {
+        let files = event.target.files,
+            i = 0,
+            len = files.length;
+
+        output1.innerHTML = '';
+        while (i < len) {
+            output1.innerHTML += `${files[i].name} (${files[i].type}, ${files[i].size} bytes) <br/>`;
+            i++;
+        }
+
+    }, false);
+</script>
+
+<h2>2、FileReader示例</h2>
+<input id="files2" type="file">
+<div id="progress"></div>
+<pre id="output2"></pre>
+<script>
+
+    // FileReader示例
+    // 测试FileReader的六种事件
+    let files2 = document.getElementById("files2");
+    files2.addEventListener("change", (event) => {
+        let info = "",
+            output = document.getElementById("output2"),
+            progress = document.getElementById("progress"),
+            files = event.target.files,
+            type = "default",
+            reader = new FileReader();
+
+        if (/image/.test(files[0].type)) {
+            reader.readAsDataURL(files[0]);
+            type = "image";
+        } else {
+            reader.readAsText(files[0]);
+            type = "text";
+        }
+
+        reader.onloadstart = function () {
+            output.innerHTML = "<b>loadstart: </b> read file start!<br/>";
+        };
+
+        reader.onprogress = function (event) {
+            if (event.lengthComputable) {
+                progress.innerHTML = "<b>progress: </b>" + event.loaded + "/" + event.total;
+            }
+        };
+
+        reader.onabort = function () {
+            output.innerHTML += "<b>abort: </b>read file has been aborted!";
+        };
+
+        reader.onerror = function () {
+            info = "read file has failed!";
+            output.innerHTML += "<b>loadstart: </b>Could not read file, error code is " + reader.error.code;
+        };
+
+        reader.onload = function () {
+            info = "read file has successfully completed!";
+            let html = "<b>load: </b><br/>";
+            switch (type) {
+                case "image":
+                    html += "<img src=\"" + reader.result + "\">";
+                    break;
+                case "text":
+                    html += reader.result;
+                    break;
+            }
+            output.innerHTML += html + "<br/>";
+        };
+
+        reader.onloadend = function () {
+            output.innerHTML += "<b>loadend: </b>" + info;
+        };
+    });
+</script>
+
+<h2>3、读取部分内容</h2>
+<input id="files3" type="file">
+<pre id="output3"></pre>
+<script>
+
+    // 读取部分内容
+    function blobSlice(blob, startByte, length) {
+        if (blob.slice) {
+            return blob.slice(startByte, length);
+        } else if (blob.webkitSlice) {
+            return blob.webkitSlice(startByte, length);
+        } else if (blob.mozSlice) {
+            return blob.mozSlice(startByte, length);
+        } else {
+            return null;
+        }
+    }
+
+    let files3 = document.getElementById("files3");
+    files3.addEventListener("change", (event) => {
+        let output = document.getElementById("output3"),
+            files = event.target.files,
+            reader = new FileReader(),
+            blod = blobSlice(files[0], 0, 32);
+
+        if (blod) {
+            reader.readAsText(blod);
+
+            reader.onerror = function () {
+                output.innerHTML = "Could not read file, error code is " + reader.error.code;
+            };
+
+            reader.onload = function () {
+                output.innerHTML = reader.result;
+            };
+        } else {
+            alert("Your browser doesn't support slice().");
+        }
+    });
+</script>
+
+<h2>4、对象URL（window.URL.createObjectURL()）</h2>
+<input id="files4" type="file">
+<pre id="output4"></pre>
+<script>
+
+    // 对象URL（window.URL.createObjectURL()）
+    function createObjectURL(blob) {
+        if (window.URL) {
+            return window.URL.createObjectURL(blob);
+        } else if (window.webkitURL) {
+            return window.webkitURL.createObjectURL(blob);
+        } else {
+            return null;
+        }
+    }
+
+    function revokeObjectURL(url) {
+        if (window.URL) {
+            window.URL.revokeObjectURL(url);
+            console.log("revoke");
+        } else if (window.webkitURL) {
+            window.webkitURL.revokeObjectURL(url);
+        }
+    }
+
+    let files4 = document.getElementById("files4");
+    files4.addEventListener("change", (event) => {
+        let output = document.getElementById("output4"),
+            files = event.target.files,
+            url = createObjectURL(files[0]);
+
+        if (url) {
+            if (/image/.test(files[0].type)) {
+                output.innerHTML = "<img src=\"" + url + "\">";
+                let timeOutId = setTimeout(() => {
+                    clearTimeout(timeOutId);
+                    revokeObjectURL(url); // 5秒之后删除内存中的图片
+                }, 5000);
+            } else {
+                output.innerHTML = "Not an image.";
+            }
+        } else {
+            output.innerHTML = "Your browser doesn't support object URLs.";
+        }
+    });
+</script>
+
+<hr>
+<h1>兼容性</h1>
+<iframe width="100%" height="475" src="http://caniuse.com/fileapi/embed" frameborder="0"></iframe>
+</body>
+</html>

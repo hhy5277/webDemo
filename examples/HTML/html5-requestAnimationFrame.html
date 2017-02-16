@@ -25,10 +25,7 @@
 <h1>兼容性</h1>
 <iframe width="100%" height="475" src="http://caniuse.com/requestanimationframe/embed" frameborder="0"></iframe>
 <script>
-    var startTime  = 0;
     function updateProgress(timestamp) {
-        var diff = timestamp - startTime;
-        startTime = timestamp;
         var div = document.getElementById("status");
         div.style.width = (parseInt(div.style.width, 10) + 2) + "%";
         div.innerHTML = div.style.width;
