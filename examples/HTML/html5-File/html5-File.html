@@ -185,8 +185,8 @@
     });
 </script>
 
-<h2>5、使用XHR上传文件</h2>
-<div id="droptarget" style="width: 500px; height: 200px; background: silver">
+<h2>5、拖放文件并使用XHR上传文件</h2>
+<div id="droptarget" style="width: 500px; height: 200px; background: silver;border: 2px dashed black;">
     Drop some files here
 </div>
 <pre id="output5"></pre>
@@ -223,11 +223,18 @@
                 }
             };
             xhr.send(data);
+        } else if (event.type == "dragenter") {
+            droptarget.style.border = "2px dashed red";
+        } else if (event.type == "dragover") {
+            droptarget.style.border = "2px dashed red";
+        } else if (event.type == "mouseout") {
+            droptarget.style.border = "2px dashed black";
         }
     }
     droptarget.addEventListener("dragenter", handleEvent);
     droptarget.addEventListener("dragover", handleEvent);
     droptarget.addEventListener("drop", handleEvent);
+    droptarget.addEventListener("mouseout", handleEvent);
 </script>
 
 <hr>
