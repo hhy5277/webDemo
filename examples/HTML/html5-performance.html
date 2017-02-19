@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"/>
+    <title>web性能分析 - performance</title>
+</head>
+<body>
+<h1>web性能分析 - performance对象</h1>
+<pre id="output"></pre>
+
+<hr>
+<h1>兼容性</h1>
+<iframe width="100%" height="475" src="http://caniuse.com/nav-timing/embed" frameborder="0"></iframe>
+
+<script>
+    window.onload = function () {
+        let now = new Date().getTime(),
+            timing = performance.timing.toJSON(),
+            navigation = performance.navigation.toJSON(),
+            timeInfo = '',
+            output = document.getElementById("output"),
+            attrs = {
+                redirectCount: '页面加载前的重定向次数',
+                type: '页面导航类型',
+                navigationStart: '开始导航到当前页面的时间',
+                unloadEventStart: '前一个页面的unload事件开始的时间',
+                unloadEventEnd: '前一个页面的unload事件结束的时间',
+                redirectStart: '到当前页面的重定向开始的时间',
+                redirectEnd: '到当前页面的重定向结束的时间',
+                fetchStart: '开始通过HTTP GET取得页面的时间',
+                domainLookupStart: '开始查询当前页面DNS的时间',
+                domainLookupEnd: '查询当前页面DNS结束的时间',
+                connectStart: '浏览器尝试连接服务器的时间',
+                connectEnd: '浏览器成功连接到服务器的时间',
+                secureConnectionStart: '浏览器尝试以SSL方式连接服务器的时间',
+                requestStart: '浏览器开始请求页面的时间',
+                responseStart: '浏览器接收到页面第一字节的时间',
+                responseEnd: '浏览器接收到页面所有内容的时间',
+                domLoading: 'document.readyState变为"loading"的时间',
+                domInteractive: 'document.readyState变为"interactive"的时间',
+                domContentLoadedEventStart: '发生DOMContentLoaded事件的时间',
+                domContentLoadedEventEnd: 'DOMContentLoaded事件已经发生且执行完所有事件处理程序的时间',
+                domComplete: 'document.readyState变为"complete"的时间',
+                loadEventStart: '发生load事件的时间',
+                loadEventEnd: 'load事件已经发生且执行完所有事件处理程序的时间'
+            };
+
+        timeInfo += '<h2>performance.navigation:</h2><ul>';
+        for (let p in navigation) {
+            let str = '';
+            if (p === 'type') {
+                if (navigation[p] === 0) {
+                    str = `${navigation[p]}(页面第一次加载)`;
+                } else if (navigation[p] === 1) {
+                    str = `${navigation[p]}(页面重载过)`;
+                } else if (navigation[p] === 2) {
+                    str = `${navigation[p]}(页面是通过“后退”或“前进”按钮打开的)`;
+                }
+            } else {
+                str = navigation[p];
+            }
+            timeInfo += `<li>${p}(${attrs[p]}): ${str}</li>`;
+        }
+        timeInfo += '</ul>';
+        timeInfo += '<h2>performance.timing:</h2><ul>';
+        for (let p in timing) {
+            timeInfo += `<li>${p}(${attrs[p]}): ${timing[p]}</li>`;
+        }
+        timeInfo += '</ul>';
+        output.innerHTML = timeInfo;
+    };
+</script>
+</body>
+</html>
