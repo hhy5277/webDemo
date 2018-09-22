@@ -3,11 +3,16 @@
  * homepage：http://www.laixiangran.cn.
  * 接口
  */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 function printLabel(labelledObj) {
     console.log(labelledObj.label);
 }
@@ -40,7 +45,7 @@ myArray = ["Bob", "Fred"];
 function createClock(ctor, hour, minute) {
     return new ctor(hour, minute);
 }
-var DigitalClock = (function () {
+var DigitalClock = /** @class */ (function () {
     function DigitalClock(h, m) {
     }
     DigitalClock.prototype.tick = function () {
@@ -48,7 +53,7 @@ var DigitalClock = (function () {
     };
     return DigitalClock;
 }());
-var AnalogClock = (function () {
+var AnalogClock = /** @class */ (function () {
     function AnalogClock(h, m) {
     }
     AnalogClock.prototype.tick = function () {
@@ -74,15 +79,15 @@ c.reset();
 c.interval = 5.0;
 // 接口继承类
 // SelectableControl包含了Control的所有成员，包括私有成员state。 因为 state是私有成员，所以只能够是Control的子类们才能实现SelectableControl接口。
-var Control = (function () {
+var Control = /** @class */ (function () {
     function Control() {
     }
     return Control;
 }());
-var Button = (function (_super) {
+var Button = /** @class */ (function (_super) {
     __extends(Button, _super);
     function Button() {
-        _super.apply(this, arguments);
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     Button.prototype.select = function () { };
     return Button;

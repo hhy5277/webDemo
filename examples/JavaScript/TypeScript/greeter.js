@@ -2,7 +2,7 @@
  * Created by laixiangran on 2016/7/7.
  * homepage：http://www.laixiangran.cn.
  */
-var Student = (function () {
+var Student = /** @class */ (function () {
     function Student(firstName, middleInitial, lastName) {
         this.firstName = firstName;
         this.middleInitial = middleInitial;

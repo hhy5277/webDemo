@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="赖祥燃, laixiangran@163.com, http://www.laixiangran.cn"/>
+    <title>元素水平垂直居中</title>
+    <style>
+        .main {
+            width: 300px;
+            height: 300px;
+            background-color: #50ba8b;
+
+            /*关键代码*/
+            display: flex;
+        }
+
+        .content {
+            width: 150px;
+            height: 150px;
+            background-color: #5b4d4e;
+
+            /*关键代码*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="content">我是要居中的块级元素div</div>
+</div>
+</body>
+</html>

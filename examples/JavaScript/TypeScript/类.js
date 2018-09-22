@@ -3,23 +3,29 @@
  * homepage：http://www.laixiangran.cn.
  * 类
  */
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 // protected成员在派生类中仍然可以访问
-var Person = (function () {
+var Person = /** @class */ (function () {
     function Person(name) {
         this.name = name;
     }
     return Person;
 }());
-var Employee = (function (_super) {
+var Employee = /** @class */ (function (_super) {
     __extends(Employee, _super);
     function Employee(name, department) {
-        _super.call(this, name);
-        this.department = department;
+        var _this = _super.call(this, name) || this;
+        _this.department = department;
+        return _this;
     }
     Employee.prototype.getElevatorPitch = function () {
         return "Hello, my name is " + this.name + " and I work in " + this.department + ".";
@@ -30,7 +36,7 @@ var howard = new Employee("Howard", "Sales");
 console.log(howard.getElevatorPitch());
 // 存取器
 var passcode = "secret passcode1";
-var Employee1 = (function () {
+var Employee1 = /** @class */ (function () {
     function Employee1() {
     }
     Object.defineProperty(Employee1.prototype, "fullName", {
@@ -56,7 +62,7 @@ if (employee.fullName) {
     console.error(employee.fullName);
 }
 // 静态属性 关键字static
-var Grid = (function () {
+var Grid = /** @class */ (function () {
     function Grid(scale) {
         this.scale = scale;
     }
@@ -73,7 +79,7 @@ var grid2 = new Grid(5.0); // 5x scale
 console.log(grid1.calculateDistanceFromOrigin({ x: 10, y: 10 }));
 console.log(grid2.calculateDistanceFromOrigin({ x: 10, y: 10 }));
 // 抽象类 关键字abstract
-var Department = (function () {
+var Department = /** @class */ (function () {
     function Department(name) {
         this.name = name;
     }
@@ -82,10 +88,10 @@ var Department = (function () {
     };
     return Department;
 }());
-var AccountingDepartment = (function (_super) {
+var AccountingDepartment = /** @class */ (function (_super) {
     __extends(AccountingDepartment, _super);
     function AccountingDepartment() {
-        _super.call(this, 'Accounting and Auditing'); // constructors in derived classes must call super()
+        return _super.call(this, 'Accounting and Auditing') || this;
     }
     AccountingDepartment.prototype.printMeeting = function () {
         console.log('The Accounting Department meets each Monday at 10am.');

@@ -38,7 +38,7 @@ var o = {
 var a = o.a, b = o.b;
 console.log(a); // outputs "foo"
 console.log(b); // outputs 12
-(_d = { a: "baz", b: 101 }, a = _d.a, b = _d.b, _d);
+(_d = { a: "baz", b: 101 }, a = _d.a, b = _d.b);
 console.log(a); // outputs "baz"
 console.log(b); // outputs 101
 // 属性重命名
